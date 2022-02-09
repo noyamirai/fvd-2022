@@ -1,29 +1,20 @@
 # Procesverslag
-**Auteur:** -jouw naam-
+**Auteur:** Maijla Ikiz
 
 **De opdrachten:** [opdracht 1](opdracht1/index.html) en [opdracht 2](opdracht2/index.html)
 
+<!-- Markdown cheat cheet: [Hulp bij het schrijven van Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). -->
 
-Markdown is een simpele manier om HTML te schrijven.  
-Markdown cheat cheet: [Hulp bij het schrijven van Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
-
-Nb. De standaardstructuur en de spartaanse opmaak van de README.md zijn helemaal prima. Het gaat om de inhoud van je procesverslag. Besteedt de tijd voor pracht en praal aan je website.
-
-Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard open zetten. Fijn om dat steeds voor de relevante stuk(ken) te doen.
-
-
-
-## Bronnenlijst
+<!-- ## Bronnenlijst
   1. -bron 1-
   2. -bron 2-
-  3. -...-
-
+  3. -...- -->
 
 
 ## Opdracht 1 plan
 
 <details open>
-  <summary>uitwerken na schetsen idee (voor week 2)</summary>
+  <summary>Uitwerken na schetsen idee (voor week 2)</summary>
 
 
   ### Je storyboard:
