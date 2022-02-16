@@ -82,59 +82,181 @@ h1 {
 		position: absolute;
 
 		top: 50%;
-		transform: translateY(calc(-50% + -8%));
 
 		font-size: 85px;
 
 		font-family: xenera, sans-serif;
 		font-weight: 400;
+
+		z-index: 10;
+	}
+
+	@keyframes blinkingEffect {
+		0% {
+			opacity: 100%;
+		}
+
+		50% {
+			opacity: 0%;
+		}
+
+		100% {
+			opacity: 100%;
+		}
+	}
+
+	@keyframes scaleUpEffectLeft {
+		0% {
+			font-size: 85px;
+			transform: translate(calc(-50% - 20px), calc(-50% + -8%));
+		}
+
+		100% {
+			font-size: 120px;
+			transform: translate(calc(-50% - 30px), calc(-50% + -8%));
+		}
+	}
+
+	@keyframes scaleUpEffectRight {
+		0% {
+			font-size: 85px;
+			transform: translate(calc(-50% + 20px), calc(-50% + -8%));
+		}
+
+		100% {
+			font-size: 120px;
+			transform: translate(calc(-50% + 30px), calc(-50% + -8%));
+		}
+	}
+
+	@keyframes moveApartLeft {
+		0% {
+			transform: translate(calc(-50% - 30px), calc(-50% + -8%));
+		}
+
+		100% {
+			transform: translate(calc(-50% - 140px), calc(-50% + -8%));
+		}
+	}
+
+	@keyframes moveApartRight {
+		0% {
+			transform: translate(calc(-50% + 30px), calc(-50% + -8%));
+		}
+
+		100% {
+			transform: translate(calc(-50% + 140px), calc(-50% + -8%));
+		}
+	}
+
+	@keyframes scaleDownEffectLeft {
+		0% {
+			font-size: 120px;
+			transform: translate(calc(-50% - 140px), calc(-50% + -8%));
+		}
+
+		100% {
+			font-size: 85px;
+			left: 0;
+			transform: translate(calc(-50% - 20px), calc(-50% + -8%));
+		}
+	}
+
+	@keyframes scaleDownEffectRight {
+		0% {
+			font-size: 120px;
+			transform: translate(calc(-50% + 140px), calc(-50% + -8%));
+		}
+
+		100% {
+			font-size: 85px;
+			left: 100%;
+			transform: translate(calc(-50% + 20px), calc(-50% + -8%));
+		}
 	}
 
 	h1::before {
 		content: "{";
-		left: -50px;
+		left: 50%;
+
+		transform: translate(calc(-50% - 20px), calc(-50% + -8%));
+
+		animation-name: blinkingEffect, scaleUpEffectLeft, moveApartLeft, scaleDownEffectLeft;
+		animation-duration: .5s, .2s, .2s, .2s;
+		animation-direction: normal;
+		animation-timing-function: normal;
+		animation-iteration-count: 3, 1, 1,1 ;
+		animation-fill-mode: forwards;
+
+		animation-delay: 0ms, 1.5s, 1.7s, 2s;
 	}
 
 	h1::after {
 		content: "}";
-		right: -50px;
+		left: 50%;
+
+		transform: translate(calc(-50% + 20px), calc(-50% + -8%));
+
+		animation-name: blinkingEffect, scaleUpEffectRight, moveApartRight, scaleDownEffectRight;
+		animation-duration: .5s, .2s, .2s, .2s;
+		animation-direction: normal;
+		animation-timing-function: normal;
+		animation-iteration-count: 3, 1, 1, 1;
+		animation-fill-mode: forwards;
+
+		animation-delay: 0ms, 1.5s, 1.7s, 2s;
 	}
 
-	h1 span {
+	@keyframes revealLetters {
+		0% {
+			clip-path: polygon(50% 0%, 50% 0%, 50% 100%, 50% 100%);
+		}
+
+		100% {
+			clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+		}
+	}
+
+	h1 > span {
 		position: relative;
+
+		clip-path: polygon(50% 0%, 50% 0%, 50% 100%, 50% 100%);
+
+		animation-name: revealLetters;
+		animation-duration: .2s;
+		animation-iteration-count: 1;
+		animation-timing-function: ease-out;
+		animation-fill-mode: forwards;
+		animation-delay: 1.7s;
 	}
 
-	h1 span:first-of-type,
-	h1 span:last-of-type {
-		display: none;
-		font-size: 85px;
-
-		font-family: xenera, sans-serif;
-		font-weight: 400;
+	h1 span > span {
+		display: inline-block;
+		height: 71px;
 	}
 
 	/* Letter N */
-	h1 span:nth-of-type(2) {
+	h1 span > span:first-of-type {
 		color: var(--color-n);
 	}
 
 	/* Letter O */
-	h1 span:nth-of-type(3) {
+	h1 span > span:nth-of-type(2) {
 		color: var(--color-o);
 	}
 
-	h1 span:nth-of-type(2),
-	h1 span:nth-of-type(3) {
+	h1 span > span:first-of-type,
+	h1 span > span:nth-of-type(2) {
 		font-family: como, sans-serif;
 		font-weight: 800;
 	}
 
 	/* Letter Y */
-	h1 span:nth-of-type(4) {
+	h1 span > span:nth-of-type(3) {
 		color: var(--color-y);
 	}
 
 	/* Letter A */
-	h1 span:nth-of-type(5) {
+	h1 span > span:nth-of-type(4) {
 		color: var(--color-a);
 	}
