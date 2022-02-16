@@ -74,8 +74,14 @@ img {
 h1 {
 	position: relative;
 
+	display: flex;
+	justify-content: center;
+	text-align: center;
+
 	font-size: 60px;
 	font-size: 6.0rem;
+
+	width: 250px;
 }
 
 	h1::before, h1::after {
@@ -135,7 +141,9 @@ h1 {
 		}
 
 		100% {
-			transform: translate(calc(-50% - 140px), calc(-50% + -8%));
+			left: 0;
+			transform: translate(-50%, calc(-50% + -8%));
+			/* transform: translate(calc(-50% - 140px), calc(-50% + -8%)); */
 		}
 	}
 
@@ -145,33 +153,38 @@ h1 {
 		}
 
 		100% {
-			transform: translate(calc(-50% + 140px), calc(-50% + -8%));
+			left: 100%;
+			transform: translate(-50%, calc(-50% + -8%));
+			/* transform: translate(calc(-50% + 140px), calc(-50% + -8%)); */
 		}
 	}
 
 	@keyframes scaleDownEffectLeft {
 		0% {
 			font-size: 120px;
-			transform: translate(calc(-50% - 140px), calc(-50% + -8%));
+			transform: translate(-50%, calc(-50% + -8%));
+			/* transform: translate(calc(-50% - 140px), calc(-50% + -8%)); */
 		}
 
 		100% {
 			font-size: 85px;
-			left: 0;
-			transform: translate(calc(-50% - 20px), calc(-50% + -8%));
+
+			/* left: 0;
+			transform: translate(calc(-50% - 20px), calc(-50% + -8%)); */
 		}
 	}
 
 	@keyframes scaleDownEffectRight {
 		0% {
 			font-size: 120px;
-			transform: translate(calc(-50% + 140px), calc(-50% + -8%));
+			transform: translate(-50%, calc(-50% + -8%));
+			/* transform: translate(calc(-50% + 140px), calc(-50% + -8%)); */
 		}
 
 		100% {
 			font-size: 85px;
 			left: 100%;
-			transform: translate(calc(-50% + 20px), calc(-50% + -8%));
+			/* transform: translate(calc(-50% + 20px), calc(-50% + -8%)); */
 		}
 	}
 
@@ -188,7 +201,7 @@ h1 {
 		animation-iteration-count: 3, 1, 1,1 ;
 		animation-fill-mode: forwards;
 
-		animation-delay: 0ms, 1.5s, 1.7s, 2s;
+		animation-delay: 0ms, 1.4s, 1.6s, 1.9s;
 	}
 
 	h1::after {
@@ -204,7 +217,7 @@ h1 {
 		animation-iteration-count: 3, 1, 1, 1;
 		animation-fill-mode: forwards;
 
-		animation-delay: 0ms, 1.5s, 1.7s, 2s;
+		animation-delay: 0ms, 1.4s, 1.6s, 1.9s;
 	}
 
 	@keyframes revealLetters {
@@ -227,7 +240,9 @@ h1 {
 		animation-iteration-count: 1;
 		animation-timing-function: ease-out;
 		animation-fill-mode: forwards;
-		animation-delay: 1.7s;
+		animation-delay: 1.6s;
+
+		width: calc(100% - 20px);
 	}
 
 	h1 span > span {
