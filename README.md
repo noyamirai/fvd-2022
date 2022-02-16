@@ -17,16 +17,20 @@
   <summary>Uitwerken na schetsen idee (voor week 2)</summary>
 
 
-  ### Je storyboard:
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="storyboard voor opdracht 1">
+  ### Mijn storyboards:
+  Voor de eerste opdracht van Front-end voor Designers zal ik een logo gaan animeren in HTML/CSS. Hiervoor moest natuurlijk eerst een logo uitgekozen worden. Ik wist vrijwel direct al welk logo ik graag wou animeren, namelijk mijn persoonlijke logo! Ik had dit logo toevallig twee dagen voor de eerste les afgemaakt, en was al van plan om het te animeren voor mijn portfolio website. Dus deze opdracht sluit mooi aan.
+
+  In de onderstaande afbeeldingen zijn twee verschillende storyboards te zien waarin ik laat zien hoe de animatie zal verlopen. Het logo is gemaakt met het idee dat het een soort programmeer/development logo moet zijn. Deze "vibe" wil ik ook terug laten komen door middel van de animatie.
+
+  #### Typewriter animatie storyboard
+  <img src="readme-images/noya_animatie_storyboard-versie_1.png" width="375px" alt="storyboard voor opdracht 1">
+
+  #### Curly brackets focused animatie storyboard
+  <img src="readme-images/noya_animatie_storyboard-versie_2.png" width="375px" alt="storyboard voor opdracht 1">
 
 
   ### Je ambitie: 
-  Aan deze technieken/punten wil ik werken:
-  - punt 1
-  - punt 2
-  - nog een punt
-  - ...
+  Ik heb veel front-end ervaring, maar het animatie gedeelte daarvan is iets waar ik me nooit echt zelfverzekered in voel en het is ook iets wat ik niet vaak doe. Hier wil ik mij dus voornamelijk in verder ontwikkelen. Ik hoop daarom met deze opdracht mij verder te ontwikkel in vooral het werken met keyframes en de verschillende animatie mogelijkheden i.p.v. alleen een simpele zoom-in effect bijvoorbeeld. 
  
 </details>
 
