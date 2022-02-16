@@ -23,10 +23,10 @@
   In de onderstaande afbeeldingen zijn twee verschillende storyboards te zien waarin ik laat zien hoe de animatie zal verlopen. Het logo is gemaakt met het idee dat het een soort programmeer/development logo moet zijn. Deze "vibe" wil ik ook terug laten komen door middel van de animatie.
 
   #### Typewriter animatie storyboard
-  <img src="readme-images/noya_animatie_storyboard-versie_1.png" width="375px" alt="storyboard voor opdracht 1">
+  <img src="readme-images/noya_animatie_storyboard-versie_1.jpg" width="375px" alt="storyboard voor opdracht 1">
 
   #### Curly brackets focused animatie storyboard
-  <img src="readme-images/noya_animatie_storyboard-versie_2.png" width="375px" alt="storyboard voor opdracht 1">
+  <img src="readme-images/noya_animatie_storyboard-versie_2.jpg" width="375px" alt="storyboard voor opdracht 1">
 
 
   ### Je ambitie: 
