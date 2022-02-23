@@ -204,13 +204,13 @@ h1 {
 		transform: translate(calc(-50% - 25px), calc(-50% + -8%));
 
 		animation-name: blinkingEffect, scaleUpEffectLeft, moveApartLeft, scaleDownEffectLeft, closeEffectLeft;
-		animation-duration: .5s, .2s, .2s, .2s, .85s;
+		animation-duration: .5s, .2s, .2s, .2s, .4s;
 		animation-direction: normal;
 		animation-timing-function: normal;
 		animation-iteration-count: 3, 1, 1, 1, 1;
 		animation-fill-mode: forwards;
 
-		animation-delay: 250ms, 1.65s, 1.85s, 2.1s, 2.6s;
+		animation-delay: 250ms, 1.65s, 1.85s, 2.1s, 2.46s;
 	}
 
 	h1::after {
@@ -220,13 +220,13 @@ h1 {
 		transform: translate(calc(-50% + 25px), calc(-50% + -8%));
 
 		animation-name: blinkingEffect, scaleUpEffectRight, moveApartRight, scaleDownEffectRight, closeEffectRight;
-		animation-duration: .5s, .2s, .2s, .2s, .8s;
+		animation-duration: .5s, .2s, .2s, .2s, .4s;
 		animation-direction: normal;
 		animation-timing-function: normal;
 		animation-iteration-count: 3, 1, 1, 1, 1;
 		animation-fill-mode: forwards;
 
-		animation-delay: 250ms, 1.65s, 1.85s, 2.1s, 2.6s;
+		animation-delay: 250ms, 1.65s, 1.85s, 2.1s, 2.46s;
 	}
 
 	@keyframes revealLetters {
@@ -261,11 +261,11 @@ h1 {
 		clip-path: polygon(50% 0%, 50% 0%, 50% 100%, 50% 100%);
 
 		animation-name: revealLetters, moveLetters;
-		animation-duration: .2s, .8s;
+		animation-duration: .2s, .5s;
 		animation-iteration-count: 1, 1;
 		animation-timing-function: ease-out, ease-in-out;
 		animation-fill-mode: forwards;
-		animation-delay: 1.85s, 2.5s;
+		animation-delay: 1.85s, 2.42s;
 
 		width: calc(100% - 20px);
 	}
