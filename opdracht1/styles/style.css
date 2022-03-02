@@ -16,10 +16,36 @@ html { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: 
 :root {
 	--color-main: #5e647f;
 	--color-background: #1b1d29;
+	--color-background-light: #f4f4f4;
 	--color-n: #ec3749;
 	--color-o: #ae4bfa;
 	--color-y: #3d9df7;
 	--color-a: #ffaa17;
+
+	--default-font-size: 53px;
+	--default-font-size-rem: 5.3rem;
+
+	--brackets-size: 100px;
+	--brackets-size-rem: 10.0rem;
+
+	--brackets-scaled: 135px;
+	--brackets-scaled-rem: 13.5rem;
+
+	--l-bracket-start-location: translate(calc(-50% - 22px), calc(-50% + -8%));
+	--r-bracket-start-location: translate(calc(-50% + 22px), calc(-50% + -8%));
+	
+	--l-bracket-scaled-location: translate(calc(-50% - 32px), calc(-50% + -8%));
+	--r-bracket-scaled-location: translate(calc(-50% + 32px), calc(-50% + -8%));
+
+	--brackets-end-location: translate(-50%, calc(-50% + -8%));
+
+	--l-bracket-position: 22%;
+	--r-bracket-position: 78%;
+
+	--letter-height: 46px;
+	--letter-width: 43px;
+
+	--logo-width: 220px;
 }
 /* =============================================================================
   #GENERAL
@@ -39,9 +65,12 @@ html {
 }
 
 body {
+	position: relative;
+
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	flex-direction: column;
 
 	width: 100vw;
 	height: 100vh;
@@ -59,6 +88,12 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 
 	background-color: var(--color-background);
+	transition: all 250ms ease-in-out;
+}
+
+body.lightmode {
+	color: var(--color-background);
+	background-color: var(--color-background-light);
 }
 
 img {
@@ -67,6 +102,12 @@ img {
 	vertical-align: middle;
 }
 
+/* =============================================================================
+  #UTILITIES
+============================================================================= */
+.hide {
+	display: none;
+}
 /* =============================================================================
   #TYPOGRAPHY
 ============================================================================= */
@@ -78,10 +119,9 @@ h1 {
 	justify-content: center;
 	text-align: center;
 
-	font-size: 60px;
-	font-size: 6.0rem;
+	font-size: var(--default-font-size); font-size: var(--default-font-size-rem);
 
-	width: 250px;
+	width: var(--logo-width);
 }
 
 	h1::before, h1::after {
@@ -89,7 +129,7 @@ h1 {
 
 		top: 50%;
 
-		font-size: 118px;
+		font-size: var(--brackets-size); font-size: var(--brackets-size-rem);
 
 		font-family: xenera, sans-serif;
 		font-weight: 400;
@@ -113,67 +153,67 @@ h1 {
 
 	@keyframes scaleUpEffectLeft {
 		0% {
-			font-size: 118px;
-			transform: translate(calc(-50% - 25px), calc(-50% + -8%));
+			font-size: var(--brackets-size); font-size: var(--brackets-size-rem);
+			transform: var(--l-bracket-start-location);
 		}
 
 		100% {
-			font-size: 165px;
-			transform: translate(calc(-50% - 35px), calc(-50% + -8%));
+			font-size: var(--brackets-scaled); font-size: var(--brackets-scaled-rem);
+			transform: var(--l-bracket-scaled-location);
 		}
 	}
 
 	@keyframes scaleUpEffectRight {
 		0% {
-			font-size: 118px;
-			transform: translate(calc(-50% + 25px), calc(-50% + -8%));
+			font-size: var(--brackets-size); font-size: var(--brackets-size-rem);
+			transform: var(--r-bracket-start-location);
 		}
 
 		100% {
-			font-size: 170px;
-			transform: translate(calc(-50% + 35px), calc(-50% + -8%));
+			font-size: var(--brackets-scaled); font-size: var(--brackets-scaled-rem);
+			transform: var(--r-bracket-scaled-location);
 		}
 	}
 
 	@keyframes moveApartLeft {
 		0% {
-			transform: translate(calc(-50% - 35px), calc(-50% + -8%));
+			transform: var(--l-bracket-scaled-location);
 		}
 
 		100% {
 			left: 0;
-			transform: translate(-50%, calc(-50% + -8%));
+			transform: var(--brackets-end-location);
 		}
 	}
 
 	@keyframes moveApartRight {
 		0% {
-			transform: translate(calc(-50% + 35px), calc(-50% + -8%));
+			transform: var(--r-bracket-scaled-location);
 		}
 
 		100% {
 			left: 100%;
-			transform: translate(-50%, calc(-50% + -8%));
+			transform: var(--brackets-end-location);
 		}
 	}
 
 	@keyframes scaleDownEffectLeft {
 		0% {
-			font-size: 165px;
+			font-size: var(--brackets-scaled); font-size: var(--brackets-scaled-rem);
 		}
 
 		100% {
-			font-size: 118px;
+			font-size: var(--brackets-size); font-size: var(--brackets-size-rem);
 		}
 	}
 
 	@keyframes scaleDownEffectRight {
 		0% {
-			font-size: 165px;
+			font-size: var(--brackets-scaled); font-size: var(--brackets-scaled-rem);
 		}
 
 		100% {
-			font-size: 118px;
+			font-size: var(--brackets-size); font-size: var(--brackets-size-rem);
 		}
 	}
 
@@ -183,7 +223,7 @@ h1 {
 		}
 
 		100% {
-			left: 22%;
+			left: var(--l-bracket-position);
 		}
 	}
 
@@ -193,7 +233,7 @@ h1 {
 		}
 
 		100% {
-			left: 78%;
+			left: var(--r-bracket-position);
 		}
 	}
 
@@ -201,7 +241,7 @@ h1 {
 		content: "{";
 		left: 50%;
 
-		transform: translate(calc(-50% - 25px), calc(-50% + -8%));
+		transform: var(--l-bracket-start-location);
 
 		animation-name: blinkingEffect, scaleUpEffectLeft, moveApartLeft, scaleDownEffectLeft, closeEffectLeft;
 		animation-duration: .5s, .2s, .2s, .2s, .4s;
@@ -217,7 +257,7 @@ h1 {
 		content: "}";
 		left: 50%;
 
-		transform: translate(calc(-50% + 25px), calc(-50% + -8%));
+		transform: var(--r-bracket-start-location);
 
 		animation-name: blinkingEffect, scaleUpEffectRight, moveApartRight, scaleDownEffectRight, closeEffectRight;
 		animation-duration: .5s, .2s, .2s, .2s, .4s;
@@ -276,11 +316,11 @@ h1 {
 		justify-content: center;
 		flex-direction: row;
 
-		height: 53px;
+		height: var(--letter-height);
 	}
 
 	h1 span > span > span {
-		min-width: 50px;
+		min-width: var(--letter-width);
 	}
 
 	/* Letter N */
@@ -313,3 +353,99 @@ h1 {
 	h1 span > span:last-of-type > span:last-of-type {
 		color: var(--color-a);
 	}
+/* =============================================================================
+  #INPUT STYLING
+============================================================================= */
+fieldset {
+	position: absolute;
+
+	bottom: 20px;
+	left: 50%;
+
+	transform: translateX(-50%);
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+	fieldset input[type="checkbox"] {
+		position: absolute;
+		visibility: hidden;
+		top: 0;
+		right: 0;
+		z-index: 5;
+	}
+
+	fieldset label {
+		display: inline-block;
+		position: relative;
+
+		width: 60px;
+		height: 30px;
+
+		border-radius: 50px;
+
+		background-color: var(--color-main);
+		cursor: pointer;
+		transition: all 250ms ease-in-out;
+	}
+
+
+		fieldset label::before {
+			content: "";
+			position: absolute;
+
+			top: 0;
+			left: 0;
+
+			width: 50%;
+			height: 100%;
+
+			border-radius: 50%;
+
+			background-color: #888fb1;
+
+			transition: all 250ms ease-in-out;
+		}
+
+		input[type="checkbox"]:checked + label::before {
+			transform: translateX(100%);
+			background-color: #bababa;
+		}
+
+		input[type="checkbox"]:checked + label {
+			background-color: #dedede;
+		}
+/* =============================================================================
+  #MEDIA QUERIES
+============================================================================= */
+/* desktop size */
+@media screen and (min-width: 600px) {
+	:root {
+		--logo-width: 250px;
+
+		--default-font-size: 60px;
+		--default-font-size-rem: 6.0rem;
+
+		--brackets-size: 118px;
+		--brackets-size-rem: 11.8rem;
+
+		--brackets-scaled: 165px;
+		--brackets-scaled-rem: 16.5rem;
+
+		--l-bracket-position: 22%;
+		--r-bracket-position: 78%;
+
+		--letter-height: 53px;
+		--letter-width: 50px;
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	body {
+		color: var(--color-background);
+		background-color: var(--color-background-light);
+	}
+}
