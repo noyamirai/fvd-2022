@@ -28,6 +28,9 @@ html { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: 
 	--brackets-size: 100px;
 	--brackets-size-rem: 10.0rem;
 
+	--brackets-size-small: 50px;
+	--brackets-size-small-rem: 5.0rem;
+
 	--brackets-scaled: 135px;
 	--brackets-scaled-rem: 13.5rem;
 
@@ -46,6 +49,8 @@ html { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: 
 	--letter-width: 43px;
 
 	--logo-width: 220px;
+
+	--letter-Animation-Start: 1.85s;
 }
 /* =============================================================================
   #GENERAL
@@ -108,6 +113,154 @@ img {
 .hide {
 	display: none;
 }
+
+/* =============================================================================
+  #ANIMATIONS
+============================================================================= */
+/* BRACKET ANIMATIONS */
+@keyframes blinkingEffect {
+	0% {
+		opacity: 100%;
+	}
+
+	50% {
+		opacity: 0%;
+	}
+
+	100% {
+		opacity: 100%;
+	}
+}
+
+@keyframes scaleInLeftEffect {
+	0% {
+		font-size: var(--brackets-size-small); font-size: var(--brackets-size-small-rem);
+		transform: var(--l-bracket-start-location);
+	}
+
+	100% {
+		font-size: var(--brackets-size); font-size: var(--brackets-size-rem);
+		transform: var(--l-bracket-start-location);
+	}
+}
+
+@keyframes scaleInRightEffect {
+	0% {
+		font-size: var(--brackets-size-small); font-size: var(--brackets-size-small-rem);
+		transform: var(--r-bracket-start-location);
+	}
+
+	100% {
+		font-size: var(--brackets-size); font-size: var(--brackets-size-rem);
+		transform: var(--r-bracket-start-location);
+	}
+}
+
+@keyframes scaleUpEffectLeft {
+	0% {
+		font-size: var(--brackets-size); font-size: var(--brackets-size-rem);
+		transform: var(--l-bracket-start-location);
+	}
+
+	100% {
+		font-size: var(--brackets-scaled); font-size: var(--brackets-scaled-rem);
+		transform: var(--l-bracket-scaled-location);
+	}
+}
+
+@keyframes scaleUpEffectRight {
+	0% {
+		font-size: var(--brackets-size); font-size: var(--brackets-size-rem);
+		transform: var(--r-bracket-start-location);
+	}
+
+	100% {
+		font-size: var(--brackets-scaled); font-size: var(--brackets-scaled-rem);
+		transform: var(--r-bracket-scaled-location);
+	}
+}
+
+@keyframes moveApartLeft {
+	0% {
+		transform: var(--l-bracket-scaled-location);
+	}
+
+	100% {
+		left: 0;
+		transform: var(--brackets-end-location);
+	}
+}
+
+@keyframes moveApartRight {
+	0% {
+		transform: var(--r-bracket-scaled-location);
+	}
+
+	100% {
+		left: 100%;
+		transform: var(--brackets-end-location);
+	}
+}
+
+@keyframes scaleDownEffectLeft {
+	0% {
+		font-size: var(--brackets-scaled); font-size: var(--brackets-scaled-rem);
+	}
+
+	100% {
+		font-size: var(--brackets-size); font-size: var(--brackets-size-rem);
+	}
+}
+
+@keyframes scaleDownEffectRight {
+	0% {
+		font-size: var(--brackets-scaled); font-size: var(--brackets-scaled-rem);
+	}
+
+	100% {
+		font-size: var(--brackets-size); font-size: var(--brackets-size-rem);
+	}
+}
+
+@keyframes closeEffectLeft {
+	0% {
+		left: 0;
+	}
+
+	100% {
+		left: var(--l-bracket-position);
+	}
+}
+
+@keyframes closeEffectRight {
+	0% {
+		left: 100%;
+	}
+
+	100% {
+		left: var(--r-bracket-position);
+	}
+}
+/* TEXT ANIMATIONS */
+@keyframes revealLetters {
+	0% {
+		clip-path: polygon(50% 0%, 50% 0%, 50% 100%, 50% 100%);
+	}
+
+	100% {
+		clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+	}
+}
+
+@keyframes moveLetters {
+	0% {
+		width: calc(100% - 20px);
+	}
+
+	100% {
+		width: 50%;
+	}
+}
 /* =============================================================================
   #TYPOGRAPHY
 ============================================================================= */
@@ -128,165 +281,39 @@ h1 {
 		position: absolute;
 
 		top: 50%;
+		left: 50%;
 
 		font-size: var(--brackets-size); font-size: var(--brackets-size-rem);
 
 		font-family: xenera, sans-serif;
 		font-weight: 400;
 
+		animation-direction: normal;
+		animation-timing-function: normal;
+		animation-fill-mode: forwards;
+
+		animation-duration: .5s, .2s, .2s, .2s, .4s;
+		animation-iteration-count: 3, 1, 1, 1, 1;
+
+		animation-delay: 250ms, 1.65s, var(--letter-Animation-Start), 2.1s, 2.46s;
+
 		z-index: 10;
-	}
-
-	@keyframes blinkingEffect {
-		0% {
-			opacity: 100%;
-		}
-
-		50% {
-			opacity: 0%;
-		}
-
-		100% {
-			opacity: 100%;
-		}
-	}
-
-	@keyframes scaleUpEffectLeft {
-		0% {
-			font-size: var(--brackets-size); font-size: var(--brackets-size-rem);
-			transform: var(--l-bracket-start-location);
-		}
-
-		100% {
-			font-size: var(--brackets-scaled); font-size: var(--brackets-scaled-rem);
-			transform: var(--l-bracket-scaled-location);
-		}
-	}
-
-	@keyframes scaleUpEffectRight {
-		0% {
-			font-size: var(--brackets-size); font-size: var(--brackets-size-rem);
-			transform: var(--r-bracket-start-location);
-		}
-
-		100% {
-			font-size: var(--brackets-scaled); font-size: var(--brackets-scaled-rem);
-			transform: var(--r-bracket-scaled-location);
-		}
-	}
-
-	@keyframes moveApartLeft {
-		0% {
-			transform: var(--l-bracket-scaled-location);
-		}
-
-		100% {
-			left: 0;
-			transform: var(--brackets-end-location);
-		}
-	}
-
-	@keyframes moveApartRight {
-		0% {
-			transform: var(--r-bracket-scaled-location);
-		}
-
-		100% {
-			left: 100%;
-			transform: var(--brackets-end-location);
-		}
-	}
-
-	@keyframes scaleDownEffectLeft {
-		0% {
-			font-size: var(--brackets-scaled); font-size: var(--brackets-scaled-rem);
-		}
-
-		100% {
-			font-size: var(--brackets-size); font-size: var(--brackets-size-rem);
-		}
-	}
-
-	@keyframes scaleDownEffectRight {
-		0% {
-			font-size: var(--brackets-scaled); font-size: var(--brackets-scaled-rem);
-		}
-
-		100% {
-			font-size: var(--brackets-size); font-size: var(--brackets-size-rem);
-		}
-	}
-
-	@keyframes closeEffectLeft {
-		0% {
-			left: 0;
-		}
-
-		100% {
-			left: var(--l-bracket-position);
-		}
-	}
-
-	@keyframes closeEffectRight {
-		0% {
-			left: 100%;
-		}
-
-		100% {
-			left: var(--r-bracket-position);
-		}
 	}
 
 	h1::before {
 		content: "{";
-		left: 50%;
 
 		transform: var(--l-bracket-start-location);
 
 		animation-name: blinkingEffect, scaleUpEffectLeft, moveApartLeft, scaleDownEffectLeft, closeEffectLeft;
-		animation-duration: .5s, .2s, .2s, .2s, .4s;
-		animation-direction: normal;
-		animation-timing-function: normal;
-		animation-iteration-count: 3, 1, 1, 1, 1;
-		animation-fill-mode: forwards;
-
-		animation-delay: 250ms, 1.65s, 1.85s, 2.1s, 2.46s;
 	}
 
 	h1::after {
 		content: "}";
-		left: 50%;
 
 		transform: var(--r-bracket-start-location);
 
 		animation-name: blinkingEffect, scaleUpEffectRight, moveApartRight, scaleDownEffectRight, closeEffectRight;
-		animation-duration: .5s, .2s, .2s, .2s, .4s;
-		animation-direction: normal;
-		animation-timing-function: normal;
-		animation-iteration-count: 3, 1, 1, 1, 1;
-		animation-fill-mode: forwards;
-
-		animation-delay: 250ms, 1.65s, 1.85s, 2.1s, 2.46s;
-	}
-
-	@keyframes revealLetters {
-		0% {
-			clip-path: polygon(50% 0%, 50% 0%, 50% 100%, 50% 100%);
-		}
-
-		100% {
-			clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-		}
-	}
-
-	@keyframes moveLetters {
-		0% {
-			width: calc(100% - 20px);
-		}
-
-		100% {
-			width: 50%;
-		}
 	}
 
 	h1 > span {
@@ -305,7 +332,7 @@ h1 {
 		animation-iteration-count: 1, 1;
 		animation-timing-function: ease-out, ease-in-out;
 		animation-fill-mode: forwards;
-		animation-delay: 1.85s, 2.42s;
+		animation-delay: var(--letter-Animation-Start), 2.42s;
 
 		width: calc(100% - 20px);
 	}
@@ -353,6 +380,7 @@ h1 {
 	h1 span > span:last-of-type > span:last-of-type {
 		color: var(--color-a);
 	}
+
 /* =============================================================================
   #INPUT STYLING
 ============================================================================= */
@@ -447,5 +475,29 @@ fieldset {
 	body {
 		color: var(--color-background);
 		background-color: var(--color-background-light);
+	}
+}
+
+/* Tone down the animation to avoid vestibular motion triggers like scaling or panning large objects. */
+@media (prefers-reduced-motion) {
+	h1::before, h1::after {
+		font-size: var(--brackets-size-small); font-size: var(--brackets-size-small-rem);
+
+		animation-duration: .8s, .4s, .4s, .4s, .6s;
+		animation-iteration-count: 1, 1, 1, 1, 1;
+		animation-delay: 500ms, 1.4s, 1.8s, 2.3s, 2.7s;
+	}
+
+	h1::before {
+		animation-name: scaleInLeftEffect, scaleUpEffectLeft, moveApartLeft, scaleDownEffectLeft, closeEffectLeft;
+	}
+
+	h1::after {
+		animation-name: scaleInRightEffect, scaleUpEffectRight, moveApartRight, scaleDownEffectRight, closeEffectRight;
+	}
+
+	h1 > span {
+		animation-duration: .4s, .5s;
+		animation-delay: 1.8s, 2.7s;
 	}
 }

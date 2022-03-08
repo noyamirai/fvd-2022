@@ -20,3 +20,5 @@ toggleBtn.addEventListener(`click`, event => {
 
     bodyElement.classList.toggle("lightmode");
 });
+
+// when click on h1, add pointer cursor and restart animation

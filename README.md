@@ -34,28 +34,21 @@
  
 </details>
 
-
-
 ## Opdracht 1 reflectie
 
 <details>
-  <summary>uitwerken bij afronden opdracht (voor week 3)</summary>
-
+  <summary>Uitwerken bij afronden opdracht (voor week 3)</summary>
 
   ### Je uitkomst - karakteristiek screenshot(s):
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="uitomst opdracht 1">
-
+  <img src="readme-images/noya-logo-animation.gif" width="500px" alt="uitomst opdracht 1">
 
   ### Dit ging goed/Heb ik geleerd: 
-  Korte omschrijving met plaatje(s)
+  Door deze opdracht snap ik een stuk beter hoe animaties werken en hoe ik ze kan gebruiken in mijn projecten. Daarnaast was het interessant en leuk om mediaqueries voor `prefers-color-scheme` en `prefers-reduced-motion` te gebruiken. Voornamelijk `prefers-reduced-motion`, die kende ik nog niet! Soms vergeet je tijdens het coderen (uit enthousiasme :wink:) dat niet iedereen animaties even goed kan waarderen, dus goed dat dit ook ter sprake kwam tijdens de les!
 
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="top">
-
+  <img src="readme-images/noya-logo-color_schemes.jpg" width="500px" alt="light and dark mode">
 
   ### Dit was lastig/Is niet gelukt:
-  Korte omschrijving met plaatje(s)
-
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="bummer">
+  Clip-path gebruiken! Ik kende het wel, maar had er niet veel mee gewerkt waardoor ik geen idee had hoe het eigenlijk werkte! (Weet het nu ook nog niet helemaal, ik pas het aan via de inspect hehe). Voor de rest had ik het niet zo lastig!
 </details>
 
 
