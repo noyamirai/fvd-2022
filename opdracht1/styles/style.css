@@ -51,6 +51,8 @@ html { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: 
 	--logo-width: 220px;
 
 	--letter-Animation-Start: 1.85s;
+
+	--default-transition: all 250ms ease-in-out;
 }
 /* =============================================================================
   #GENERAL
@@ -93,7 +95,7 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 
 	background-color: var(--color-background);
-	transition: all 250ms ease-in-out;
+	transition: var(--default-transition);
 }
 
 body.lightmode {
@@ -113,7 +115,6 @@ img {
 .hide {
 	display: none;
 }
-
 /* =============================================================================
   #ANIMATIONS
 ============================================================================= */
@@ -417,7 +418,7 @@ fieldset {
 
 		background-color: var(--color-main);
 		cursor: pointer;
-		transition: all 250ms ease-in-out;
+		transition: var(--default-transition);
 	}
 
 
@@ -435,7 +436,7 @@ fieldset {
 
 			background-color: #888fb1;
 
-			transition: all 250ms ease-in-out;
+			transition: var(--default-transition);
 		}
 
 		input[type="checkbox"]:checked + label::before {
