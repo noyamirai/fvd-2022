@@ -1,21 +1,62 @@
 <!doctype html>
-<html lang="nl">
-	
+<html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="author" content="jouw naam">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<title>Opdracht 2: Interactie galore - Frontend voor Designers</title>
-	
-	<link href="styles/style.css" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <meta charset="UTF-8">
+    <meta name="author" content="Maijla Ikiz">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Opdracht 2: Interactie galore - Frontend voor Designers</title>
+
+    <link href="styles/style.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 </head>
 
-<body>
-	<h1>Opdracht 2</h1>
+<body class="profile">
+    <header>
+        <picture>
+            <img src="./images/bloodhound-header.png" type="Bloodhound header image">
+        </picture>
 
-	<script src="scripts/script.js"></script>
+        <section>
+            <picture>
+                <img src="./images/bloodhound-icon.png" type="Bloodhound profile picture">
+            </picture>
+
+            <div>
+                <h1>noya <span>#4521</span></h1>
+
+                <div class="tags tags--platform">
+                    <span class="tags--platform__pc">PC</span>
+                    <span class="tags--platform__ps">Playstation 5</span>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <main>
+        <section class="empty-state">
+            <p>It looks like you haven't logged any games yet!</p>
+			<a class="btn" href="">Find games</a>
+        </section>
+    </main>
+
+    <nav>
+        <ul>
+            <li class="active">
+                <a href="">Profile</a>
+            </li>
+            <li>
+                <a href="">Games</a>
+            </li>
+        </ul>
+    </nav>
+
+    <script src="scripts/script.js"></script>
 </body>
-	
+
 </html>
