@@ -16,43 +16,33 @@
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 </head>
 
-<body class="profile">
+<body class="library">
     <header>
-        <picture>
-            <img src="./images/bloodhound-header.png" type="Bloodhound header image">
-        </picture>
 
-        <section>
-            <picture>
-                <img src="./images/bloodhound-icon.png" type="Bloodhound profile picture">
-            </picture>
+        <input type="text" placeholder="Search for games">
+        
+        <form class="filters" action="">
+            <legend>Filter options</legend>
+            <fieldset>
+                <li>
+                    <input class="filters__option" type="checkbox" name="filter-action" id="filter-action">
+                    <label for="filter-action"><span><img src="./images/icons/checkmark-icon.svg" alt="Checkmark icon"></span>Action</label>
+                </li>
+            </fieldset>
+            <fieldset>
+                <li>
+                    <input class="filters__option" type="checkbox" name="filter-adventure" id="filter-adventure">
+                    <label for="filter-adventure"><span><img src="./images/icons/checkmark-icon.svg" alt="Checkmark icon"></span>Adventure</label>
+                </li>
+            </fieldset>
 
-            <div>
-                <h1>noya <span>#4521</span></h1>
-
-                <div class="tags tags--platform">
-                    <span class="tags--platform__pc">PC</span>
-                    <span class="tags--platform__ps">Playstation 5</span>
-                </div>
+            <div class="btn-container">
+                <h1>Game library</h1>
+                <p>You have selected some filters, would you like to apply them?</p>
+                <button class="btn" type="submit">Yes, apply filters(amount)</button>
+                <button id="btn-dismiss" class="btn btn--dismiss">I changed my mind</button>
             </div>
-
-            <section>
-                <ul>
-                    <li>
-                        <p>50</p>
-                        <p>games in<br>library</p>
-                    </li>
-                    <li>
-                        <p>25</p>
-                        <p>games<br>completed</p>
-                    </li>
-                    <li>
-                        <p>18</p>
-                        <p>games<br>rated</p>
-                    </li>
-                </ul>
-            </section>
-        </section>
+        </form>
     </header>
 
     <main>
@@ -235,7 +225,7 @@
         <section class="list">
             <div>
                 <h2>Completed games</h2>
-                <a href="game-overview.html">See all <span>(152)</span></a>
+                <a href="completed-games.html">See all</a>
             </div>
 
             <ol>
