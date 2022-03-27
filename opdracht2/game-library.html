@@ -17,39 +17,287 @@
 </head>
 
 <body class="library">
-    <header>
+    <header id="main-header">
+        <div>
+            <input type="text" placeholder="Search for games">
 
-        <input type="text" placeholder="Search for games">
-        
+            <nav class="nav nav--desktop">
+                <ul>
+                    <li class="active">
+                        <a id="library-btn" href="#">Game library</a>
+                    </li>
+                    <li>
+                        <a id="filter-btn" href="#">Filters</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+
         <form class="filters" action="">
             <legend>Filter options</legend>
             <fieldset>
                 <li>
                     <input class="filters__option" type="checkbox" name="filter-action" id="filter-action">
-                    <label for="filter-action"><span><img src="./images/icons/checkmark-icon.svg" alt="Checkmark icon"></span>Action</label>
+                    <label for="filter-action">
+                        <span>
+                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 10.1" style="enable-background:new 0 0 13.7 10.1;" xml:space="preserve">
+
+                                <path class="st0" d="M13.2,0.4c-0.6-0.6-1.5-0.6-2.1,0l-6,6L2.6,3.9C2,3.4,1,3.4,0.4,3.9c-0.6,0.6-0.6,1.5,0,2.1L4,9.6
+	                            c0.2,0.2,0.3,0.3,0.5,0.3c0.6,0.2,1.2,0.2,1.7-0.3l7.1-7.1C13.8,2,13.8,1,13.2,0.4z" />
+                            </svg>
+                        </span>
+                        Action
+                    </label>
                 </li>
             </fieldset>
             <fieldset>
                 <li>
                     <input class="filters__option" type="checkbox" name="filter-adventure" id="filter-adventure">
-                    <label for="filter-adventure"><span><img src="./images/icons/checkmark-icon.svg" alt="Checkmark icon"></span>Adventure</label>
+                    <label for="filter-adventure">
+                        <span>
+                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 10.1" style="enable-background:new 0 0 13.7 10.1;" xml:space="preserve">
+
+                                <path class="st0" d="M13.2,0.4c-0.6-0.6-1.5-0.6-2.1,0l-6,6L2.6,3.9C2,3.4,1,3.4,0.4,3.9c-0.6,0.6-0.6,1.5,0,2.1L4,9.6
+	                            c0.2,0.2,0.3,0.3,0.5,0.3c0.6,0.2,1.2,0.2,1.7-0.3l7.1-7.1C13.8,2,13.8,1,13.2,0.4z" />
+                            </svg> </span>
+                        Adventure
+                    </label>
                 </li>
             </fieldset>
 
-            <div class="btn-container">
+            <!-- <div class="btn-container">
                 <h1>Game library</h1>
                 <p>You have selected some filters, would you like to apply them?</p>
                 <button class="btn" type="submit">Yes, apply filters(amount)</button>
                 <button id="btn-dismiss" class="btn btn--dismiss">I changed my mind</button>
-            </div>
+            </div> -->
         </form>
     </header>
 
     <main>
-        <!-- <section class="empty-state">
-            <p>It looks like you haven't logged any games yet! Browse through our video game library to get started</p>
-			<a class="btn" href="">Find games</a>
-        </section> -->
+
+        <section class="profile">
+
+            <header>
+                <picture>
+                    <img src="./images/bloodhound-header.png" type="Bloodhound header image">
+                </picture>
+
+                <section>
+                    <picture>
+                        <img src="./images/bloodhound-icon.png" type="Bloodhound profile picture">
+                    </picture>
+
+                    <div>
+                        <h1>noya <span>#4521</span></h1>
+
+                        <div class="tags tags--platform">
+                            <span class="tags--platform__pc">PC</span>
+                            <span class="tags--platform__ps">Playstation 5</span>
+                        </div>
+                    </div>
+
+                    <!-- <section>
+                        <ul>
+                            <li>
+                                <p>50</p>
+                                <p>games in<br>library</p>
+                            </li>
+                            <li>
+                                <p>25</p>
+                                <p>games<br>completed</p>
+                            </li>
+                            <li>
+                                <p>18</p>
+                                <p>games<br>rated</p>
+                            </li>
+                        </ul>
+                    </section> -->
+                </section>
+            </header>
+
+            <section>
+
+                <!-- <section class="empty-state">
+                    <p>It looks like you haven't logged any games yet! Browse through our video game library to get started</p>
+                    <a class="btn" href="">Find games</a>
+                </section> -->
+
+                <section class="list">
+                    <h2>Top 5 best rated</h2>
+
+                    <ol>
+                        <li>
+                            <figure>
+                                <picture>
+                                    <img src="./images/dummy_game_cover.png" alt="Dummy cover">
+                                </picture>
+
+                                <figcaption>
+                                    <svg class="star star--red" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
+                                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
+                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
+                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
+                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
+                                    </svg>
+                                    <svg class="star star--yellow" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
+                                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
+                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
+                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
+                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
+                                    </svg>
+                                    <svg class="star star--green" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
+                                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
+                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
+                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
+                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
+                                    </svg>
+                                    <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
+                                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
+                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
+                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
+                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
+                                    </svg>
+                                    <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
+                                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
+                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
+                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
+                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
+                                    </svg>
+
+                                </figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <figure>
+                                <picture>
+                                    <img src="./images/dummy_game_cover.png" alt="Dummy cover">
+                                </picture>
+
+                                <figcaption>
+                                    <svg class="star star--red" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
+                                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
+                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
+                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
+                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
+                                    </svg>
+                                    <svg class="star star--yellow" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
+                                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
+                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
+                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
+                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
+                                    </svg>
+                                    <svg class="star star--green" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
+                                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
+                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
+                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
+                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
+                                    </svg>
+                                    <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
+                                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
+                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
+                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
+                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
+                                    </svg>
+                                    <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
+                                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
+                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
+                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
+                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
+                                    </svg>
+
+                                </figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <figure>
+                                <picture>
+                                    <img src="./images/dummy_game_cover.png" alt="Dummy cover">
+                                </picture>
+
+                                <figcaption>
+                                    <svg class="star star--red" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
+                                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
+                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
+                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
+                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
+                                    </svg>
+                                    <svg class="star star--yellow" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
+                                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
+                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
+                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
+                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
+                                    </svg>
+                                    <svg class="star star--green" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
+                                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
+                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
+                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
+                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
+                                    </svg>
+                                    <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
+                                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
+                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
+                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
+                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
+                                    </svg>
+                                    <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
+                                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
+                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
+                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
+                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
+                                    </svg>
+
+                                </figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <figure>
+                                <picture>
+                                    <img src="./images/dummy_game_cover.png" alt="Dummy cover">
+                                </picture>
+
+                                <figcaption>
+                                    <svg class="star star--red" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
+                                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
+                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
+                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
+                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
+                                    </svg>
+                                    <svg class="star star--yellow" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
+                                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
+                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
+                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
+                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
+                                    </svg>
+                                    <svg class="star star--green" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
+                                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
+                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
+                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
+                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
+                                    </svg>
+                                    <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
+                                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
+                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
+                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
+                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
+                                    </svg>
+                                    <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
+                                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
+                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
+                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
+                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
+                                    </svg>
+
+                                </figcaption>
+                            </figure>
+                        </li>
+                    </ol>
+                </section>
+
+            </section>
+
+        </section>
 
         <section class="list">
             <h2>Top 5 best rated</h2>
@@ -222,193 +470,23 @@
             </ol>
         </section>
 
-        <section class="list">
-            <div>
-                <h2>Completed games</h2>
-                <a href="completed-games.html">See all</a>
-            </div>
 
-            <ol>
-                <li>
-                    <figure>
-                        <picture>
-                            <img src="./images/dummy_game_cover-2.png" alt="Dummy cover">
-                        </picture>
-
-                        <figcaption>
-                            <svg class="star star--red" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                                <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
-                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
-                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
-                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                            </svg>
-                            <svg class="star star--yellow" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                                <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
-                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
-                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
-                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                            </svg>
-                            <svg class="star star--green" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                                <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
-                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
-                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
-                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                            </svg>
-                            <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                                <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
-                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
-                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
-                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                            </svg>
-                            <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                                <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
-                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
-                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
-                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                            </svg>
-
-                        </figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure>
-                        <picture>
-                            <img src="./images/dummy_game_cover.png" alt="Dummy cover">
-                        </picture>
-
-                        <figcaption>
-                            <svg class="star star--red" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                                <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
-                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
-                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
-                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                            </svg>
-                            <svg class="star star--yellow" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                                <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
-                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
-                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
-                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                            </svg>
-                            <svg class="star star--green" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                                <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
-                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
-                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
-                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                            </svg>
-                            <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                                <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
-                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
-                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
-                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                            </svg>
-                            <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                                <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
-                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
-                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
-                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                            </svg>
-
-                        </figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure>
-                        <picture>
-                            <img src="./images/dummy_game_cover.png" alt="Dummy cover">
-                        </picture>
-
-                        <figcaption>
-                            <svg class="star star--red" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                                <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
-                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
-                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
-                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                            </svg>
-                            <svg class="star star--yellow" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                                <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
-                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
-                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
-                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                            </svg>
-                            <svg class="star star--green" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                                <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
-                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
-                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
-                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                            </svg>
-                            <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                                <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
-                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
-                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
-                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                            </svg>
-                            <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                                <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
-                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
-                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
-                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                            </svg>
-
-                        </figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure>
-                        <picture>
-                            <img src="./images/dummy_game_cover.png" alt="Dummy cover">
-                        </picture>
-
-                        <figcaption>
-                            <svg class="star star--red" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                                <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
-                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
-                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
-                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                            </svg>
-                            <svg class="star star--yellow" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                                <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
-                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
-                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
-                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                            </svg>
-                            <svg class="star star--green" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                                <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
-                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
-                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
-                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                            </svg>
-                            <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                                <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
-                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
-                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
-                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                            </svg>
-                            <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                                <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
-                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
-                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
-                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                            </svg>
-
-                        </figcaption>
-                    </figure>
-                </li>
-            </ol>
-        </section>
     </main>
 
-    <nav>
+    <nav class="nav nav--mobile">
         <ul>
-            <li class="active">
-                <a href="">Profile</a>
-            </li>
             <li>
-                <a href="game-library.html">Games</a>
+                <a id="profile-btn" href="index.html">Profile</a>
+            </li>
+            <li class="active">
+                <a id="games-btn" href="#">Games</a>
             </li>
         </ul>
     </nav>
 
-    <script src="scripts/script.js"></script>
+    <!-- <script src="scripts/game-script.js"></script> -->
+    <script src="scripts/toggle-script.js"></script>
+    <script src="scripts/profile-script.js"></script>
 </body>
 
 </html>

@@ -35,6 +35,7 @@ html { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: 
 	--default-padding: 24px;
 
 	--nav-height: 80px;
+	--profile-header-height: 267px;
 
 	--border-settings: 2px solid #20242F;
 	--border-radius: 7px;
@@ -68,6 +69,9 @@ body {
 	font-size: 16px; font-size: 1.6rem;
 	line-height: 1.4;
 	color: var(--text-color-light);
+
+	min-height: 100vh;
+	min-height: -webkit-fill-available;
 
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -206,26 +210,28 @@ ul, ol, li {
 /* =============================================================================
   #PROFILE HEADER
 ============================================================================= */
-.profile header {
+.profile > header {
 	position: relative;
 
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+
+	height: var(--profile-header-height);
 }
 
 	/* Profile header */
-	.profile header > picture {		
+	.profile > header > picture {		
 		height: 135px;
 		width: 100%;
 	}
 
-		.profile header > picture source, .profile header > picture img {
+		.profile > header > picture source, .profile > header > picture img {
 			object-position: top center;
 		}
 
 	/* Profile info */
-	.profile header > section {
+	.profile > header > section {
 		position: relative;
 
 		display: flex;
@@ -240,7 +246,7 @@ ul, ol, li {
 		text-align: center;
 	}
 
-		.profile header > section > picture {
+		.profile > header > section > picture {
 			position: absolute;
 
 			top: -45px;
@@ -253,25 +259,25 @@ ul, ol, li {
 			border: 6px solid var(--secondary-color)
 		}
 
-		.profile header > section > picture, .profile header > section > picture img {
+		.profile > header > section > picture, .profile > header > section > picture img {
 			border-radius: 50%;
 		}
 
 	/* Profile stats */
-	.profile header > section > section {
+	.profile > header > section > section {
 		padding: 0 var(--default-padding);
 		margin-top: var(--default-padding);
 
 		width: 100%;
 	}
 
-		.profile header > section > section ul {
+		.profile > header > section > section ul {
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
 		}
 
-			.profile header > section > section ul li {
+			.profile > header > section > section ul li {
 				display: flex;
 				align-items: center;
 				flex-direction: column;
@@ -286,35 +292,34 @@ ul, ol, li {
 				background-color: var(--secondary-color-light);
 			}
 
-			.profile header > section > section ul li + li {
+			.profile > header > section > section ul li + li {
 				margin-left: 12px;
 			}
 
-				.profile header > section > section ul li p {
+				.profile > header > section > section ul li p {
 					margin-bottom: 0;
 				}
 
-				.profile header > section > section ul li p:first-of-type {
+				.profile > header > section > section ul li p:first-of-type {
 					font-size: 22px; font-size: 2.2rem;
 					font-weight: 700;
 					color: var(--white);
 				}
 
-				.profile header > section > section ul li p:last-of-type {
+				.profile > header > section > section ul li p:last-of-type {
 					font-size: 14px; font-size: 1.4rem;
 				}
 
-
-header + main {
+header + main, 
+section.profile > header + section {
 	border-top: var(--border-settings)
 }
 
 /* =============================================================================
   #LIBRARY HEADER
 ============================================================================= */
-.library header {
-	padding: 0 var(--default-padding);
-	margin: var(--default-padding) 0;
+.library > header {
+	padding: var(--default-padding);
 }
 
 	.library input[type="text"] {
@@ -397,7 +402,7 @@ header + main {
 			height: 100%;
 			
 			cursor: pointer;
-			
+
 			color: var(--secondary-color-light-text);
 			font-size: 14px; font-size: 1.4rem;
 			font-weight: 700;
@@ -442,7 +447,8 @@ header + main {
 			    }
 			}
 
-			.filters fieldset label > span img {
+			.filters fieldset label > span img, 
+			.filters fieldset label > span svg {
 			    opacity: 0;
 			    width: auto;
 
@@ -454,7 +460,12 @@ header + main {
 			    animation-iteration-count: 1;
 			}
 
-			.filters input[type="checkbox"]:checked + label > span img {
+			.filters fieldset label > span svg {
+				fill: var(--primary-color);
+			}
+
+			.filters input[type="checkbox"]:checked + label > span img,
+			.filters input[type="checkbox"]:checked + label > span svg {
 			    animation-name: checkmarkAnimation;
 			}
 
@@ -474,6 +485,10 @@ nav {
 	height: var(--nav-height);
 	
 	z-index: 100;
+}
+
+.nav--desktop { 
+	display: none;
 }
 
 	nav ul {
@@ -663,6 +678,40 @@ main {
 					}
 
 /* =============================================================================
+  #PROFILE SECTION
+============================================================================= */
+section.profile {
+	position: fixed;
+
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+
+	transform: translateX(-100%);
+
+	overflow: hidden;
+	z-index: 100;
+
+	background-color: var(--secondary-color);
+
+	transition: var(--btn-hover-transition);
+}
+
+section.profile--open {
+	transform: translateX(0);
+}
+
+	/* MAIN */
+	section.profile > section {
+		position: relative;
+
+		margin: 0 var(--default-padding);
+		padding: var(--default-padding) 0 calc(var(--nav-height) + 24px) 0;
+		height: calc(100% - var(--profile-header-height));
+	}
+
+/* =============================================================================
   #STAR RATING
 ============================================================================= */
 .star {
@@ -826,3 +875,132 @@ main {
 	.btn-container.visible {
 		transform: translate(0, calc(-24px + -50px + -16px));
 	}
+
+/* =============================================================================
+  #MEDIA QUERIES
+============================================================================= */
+@media screen and (min-width: 950px) {
+	.library > header {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+
+	    margin-left: auto;
+
+	    width: calc(100% - 370px);
+		padding: 0;
+		
+	}
+
+	.library > header > * {
+		width: 100%;
+	}
+
+		.library > header > div {
+			position: relative;
+			display: flex;
+			align-items: center;
+			flex-direction: row;
+			justify-content: space-between;
+
+			padding: var(--default-padding);
+			background-color: var(--secondary-color);
+			z-index: 20;
+		}
+
+			.nav--desktop {
+				position: relative;
+
+				left: auto;
+				right: auto;
+				bottom: auto;
+
+				display: block;
+
+				margin-left: 30px;
+
+				border: none;
+				background-color: transparent;
+
+				height: 100%;
+				min-width: fit-content;
+			}
+
+				.nav--desktop ul {
+					margin: 0;
+					justify-content: flex-end;
+				}
+
+					.nav--desktop ul li a {
+						padding: 12px 16px;
+						text-align: center;
+						min-width: 75px;
+						border-radius: 7px;
+					}
+
+		.nav--mobile {
+			display: none;
+		}
+
+		.filters {
+			display: flex;
+			align-items: center;
+			background-color: var(--primary-color);
+
+			margin: -70px 0 0 0;
+			padding: 0 var(--default-padding);
+			height: 70px;
+
+			transition: margin 250ms ease-in-out;
+		}
+
+		.filters--open {
+			margin: 0px 0 0 0;
+		}
+
+			.filters fieldset {
+				height: 35px;
+			}
+
+				.filters fieldset label {
+					user-select: none;
+					color: var(--white);
+					background-color: #A399FF;
+				}
+
+				.filters fieldset label > span:first-of-type {
+					background-color: var(--white);
+				}
+
+				.filters fieldset label > span svg {
+					fill: var(--white);
+				}
+
+				.filters fieldset input[type="checkbox"]:checked + label {
+					background-color: var(--white);
+					color: var(--primary-color);
+				}
+
+				.filters fieldset input[type="checkbox"]:checked + label > span:first-of-type {
+					background-color: var(--primary-color);
+				}
+
+	main {
+		margin: 0 0 0 auto;
+		padding: var(--default-padding) 0 24px 0;
+		width: calc(100% - 370px);
+	}
+
+		section.profile {
+			transform: translateX(0);
+			
+			border-right: var(--border-settings);
+			width: 370px;
+		}
+
+		main > section.list {
+			margin: 0;
+		}
+}
