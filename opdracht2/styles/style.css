@@ -169,6 +169,10 @@ ul, ol, li {
 	list-style: none;
 }
 
+.hide {
+	display: none;
+}
+
 /* =============================================================================
   #TAGS
 ============================================================================= */
@@ -561,7 +565,7 @@ main {
 		}
 
 			section.list h2 {
-				margin: 0 0 16px var(--default-padding);
+				margin: 0 0 0 var(--default-padding);
 			}
 
 			section.list--overview h2 {
@@ -589,9 +593,71 @@ main {
 			align-items: center;
 			flex-direction: row;
 
-			padding: 0 var(--default-padding);
+			padding: 16px var(--default-padding);
 
 			overflow-x: scroll;
+			border: 2px solid var(--secondary-color);
+			border-radius: var(--border-radius);
+		}
+
+			section.list .list__empty {
+				position: relative;
+
+				/* padding: 0; */
+				margin: 16px var(--default-padding);
+
+				min-height: 150px;
+
+				background-color: var(--secondary-color-light);
+				transition: border 250ms ease-in-out;
+			}
+
+				.list__empty::before {
+					content: "Drag something in here!";
+					position: absolute;
+
+					top: 50%;
+					left: 50%;
+
+					transform: translate(-50%, -50%);
+
+					text-align: center;
+					color: var(--secondary-color-light-text);
+					font-weight: 600;
+				}
+		
+		.list__empty--active {
+			border: 2px solid var(--primary-color)!important;
+		}
+
+		.list__drag-container--block {
+			position: relative;
+		}
+
+		.list__drag-container--block::before {
+			content: "Game is already in this list!";
+
+			position: absolute;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			top: 50%;
+			left: 24px;
+			right: 24px;
+
+			transform: translateY(-50%);
+
+			text-align: center;
+			color: var(--white);
+			font-weight: 600;
+
+			z-index: 100;
+
+			height: 30%;
+			
+			background-color: rgb(205 40 40 / 75%);
 		}
 
 		section.list--overview ol {
@@ -618,6 +684,12 @@ main {
 				width: 115px;
 				min-width: 115px;
 				height: 150px;
+
+				overflow: hidden;
+			}
+
+			.draggable {
+				cursor: grab;
 			}
 
 			section.list--overview ol li {
@@ -633,25 +705,6 @@ main {
 
 			section.list--overview ol li + li {
 				margin-left: 0;
-			}
-
-			section.list ol li::before {
-				content: "";
-
-				position: absolute;
-				
-				top: 0;
-				left: 0;
-				right: 0;
-				bottom: 0;
-
-				width: 100%;
-				height: 100%;
-
-				border-radius: var(--border-radius);
-
-				background: rgb(0, 0, 0);
-				background: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%);
 			}
 
 				section.list ol li > figure, section.list ol li > figure picture, section.list ol li > figure picture > img {
@@ -670,13 +723,33 @@ main {
 
 						left: 0;
 						right: 0;
-						bottom: 12px;
+						bottom: -100px;
 
 						text-align: center;
-						
+						 
 						z-index: 5;
+						transition: var(--btn-hover-transition);
 					}
 
+					section.list ol li:hover > figure figcaption {
+						cursor: pointer;
+						bottom: 0px;
+					}
+
+						section.list ol li > figure figcaption > button {
+							min-width: 100%;
+
+							border-top-left-radius: 0;
+							border-top-right-radius: 0;
+						}
+
+						.add-game {
+							background-color: var(--green);
+						}
+
+						.remove-game {
+							background-color: var(--red);
+						}
 /* =============================================================================
   #PROFILE SECTION
 ============================================================================= */
@@ -690,7 +763,8 @@ section.profile {
 
 	transform: translateX(-100%);
 
-	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: scroll;
 	z-index: 100;
 
 	background-color: var(--secondary-color);
@@ -708,7 +782,7 @@ section.profile--open {
 
 		margin: 0 var(--default-padding);
 		padding: var(--default-padding) 0 calc(var(--nav-height) + 24px) 0;
-		height: calc(100% - var(--profile-header-height));
+		/* height: calc(100% - var(--profile-header-height)); */
 	}
 
 /* =============================================================================
@@ -760,9 +834,48 @@ section.profile--open {
 }
 
 /* =============================================================================
+  #NOTIFICATIONS
+============================================================================= */
+.notification {
+	position: fixed;
+
+	left: var(--default-padding);
+	right: var(--default-padding);
+	bottom: 0;
+
+	padding: 14px;
+
+	color: var(--white);
+	font-weight: 700;
+	font-size: 14px; font-size: 1.4rem;
+
+	border-radius: var(--border-radius);
+
+	background-color: var(--primary-color);
+	transition: var(--btn-hover-transition);
+}
+
+	.notification--open {
+		bottom: calc(var(--nav-height) + var(--default-padding));
+	}
+
+	.notification--added {
+		background-color: var(--green);
+	}
+
+	.notification--removed {
+		background-color: var(--red);
+	}
+
+	.notification p {
+		margin: 0;
+		text-align: center;
+	}
+
+/* =============================================================================
   #BUTTONS
 ============================================================================= */
-.btn {
+button, .btn {
     display: inline-block;
     padding: 8px;
 
@@ -1000,7 +1113,26 @@ section.profile--open {
 			width: 370px;
 		}
 
+		section.profile > section {
+			padding: var(--default-padding) 0;
+		}
+
 		main > section.list {
 			margin: 0;
 		}
+
+		.notification {
+			left: auto;
+			right: var(--default-padding);
+			bottom: 0;
+
+			transform: translateY(100%);
+	
+			width: calc(100% - calc(370px + var(--default-padding) + var(--default-padding)));
+		}
+
+			.notification--open {
+				bottom: var(--default-padding);
+				transform: translateY(0);
+			}
 }

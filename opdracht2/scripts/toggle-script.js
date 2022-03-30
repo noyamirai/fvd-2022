@@ -9,7 +9,6 @@ const filterBtn = document.querySelector('#filter-btn');
 const libraryBtn = document.querySelector('#library-btn');
 
 const btnContainer = document.querySelector(".btn-container");
-const dismissBtn = document.querySelector("#btn-dismiss");
 
 filterBtn.addEventListener('click', (e) => {
     e.preventDefault();
