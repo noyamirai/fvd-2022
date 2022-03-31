@@ -692,6 +692,10 @@ main {
 				cursor: grab;
 			}
 
+			.draggable--mobile {
+				cursor: pointer!important;
+			}
+
 			section.list--overview ol li {
 			    width: auto;
 			    min-width: auto;
@@ -708,10 +712,23 @@ main {
 			}
 
 				section.list ol li > figure, section.list ol li > figure picture, section.list ol li > figure picture > img {
-					height: 100%;
 					width: 100%;
 
 					border-radius: var(--border-radius);
+				}
+
+				section.list ol li > figure {
+					height: 100%;
+				}
+
+				section.list ol li > figure picture {
+					height: calc(100% - 35px);
+					/* button height */
+				}
+
+				section.list ol li > figure picture > img {
+					height: 150px; 
+					/* li height */
 				}
 
 					section.list ol li > figure picture > img {
