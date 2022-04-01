@@ -170,7 +170,7 @@ ul, ol, li {
 }
 
 .hide {
-	display: none;
+	display: none!important;
 }
 
 /* =============================================================================
@@ -546,10 +546,6 @@ main {
 		margin: 0 -24px 0 -24px;
 	}
 
-	section.list--overview {
-		margin: auto;
-	}
-
 	section.list + .list {
 		margin-top: var(--default-padding);
 	}
@@ -566,10 +562,6 @@ main {
 
 			section.list h2 {
 				margin: 0 0 0 var(--default-padding);
-			}
-
-			section.list--overview h2 {
-				margin: 0 0 16px 0;
 			}
 
 			section.list > div > h2 {
@@ -660,18 +652,6 @@ main {
 			background-color: rgb(205 40 40 / 75%);
 		}
 
-		section.list--overview ol {
-			display: grid;
-
-			grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
-			/* grid-template-columns: repeat(auto-fit, minmax(102px, 1fr)); */
-			gap: 14px;
-
-			overflow-x: visible;
-
-			padding: 0;
-		}
-		
 		section.list ol::-webkit-scrollbar {
 		    display: none;
 			-ms-overflow-style: none;
@@ -681,9 +661,8 @@ main {
 			section.list ol li {
 				position: relative;
 
-				width: 115px;
-				min-width: 115px;
-				height: 150px;
+				width: 200px;
+				min-width: 200px;
 
 				overflow: hidden;
 			}
@@ -693,23 +672,13 @@ main {
 			}
 
 			.draggable--mobile {
-				cursor: pointer!important;
-			}
-
-			section.list--overview ol li {
-			    width: auto;
-			    min-width: auto;
-
-				height: 100%;
+				cursor: pointer;
 			}
 
 			section.list ol li + li {
 				margin-left: 16px;
 			}
 
-			section.list--overview ol li + li {
-				margin-left: 0;
-			}
 
 				section.list ol li > figure, section.list ol li > figure picture, section.list ol li > figure picture > img {
 					width: 100%;
@@ -718,50 +687,72 @@ main {
 				}
 
 				section.list ol li > figure {
+					position: relative;
 					height: 100%;
 				}
 
 				section.list ol li > figure picture {
-					height: calc(100% - 35px);
-					/* button height */
-				}
-
-				section.list ol li > figure picture > img {
-					height: 150px; 
-					/* li height */
+					height: 110px;
+					border-bottom-left-radius: 0;
+					border-bottom-right-radius: 0;
 				}
 
 					section.list ol li > figure picture > img {
 						object-fit: cover;
+						object-position: center;
+						border-bottom-left-radius: 0;
+						border-bottom-right-radius: 0;
+					}
+
+					.dummy img {
+						object-fit: contain;
+					}
+
+					.dummy figcaption { 
+						border-top: 2px solid #2e3340;
 					}
 
 					section.list ol li > figure figcaption {
-						position: absolute;
+						padding: 12px 16px;
 
-						left: 0;
-						right: 0;
-						bottom: -100px;
+						border-bottom-left-radius: var(--border-radius);
+						border-bottom-right-radius: var(--border-radius);
 
-						text-align: center;
-						 
-						z-index: 5;
-						transition: var(--btn-hover-transition);
+						background-color: var(--secondary-color-light);
 					}
 
-					section.list ol li:hover > figure figcaption {
-						cursor: pointer;
-						bottom: 0px;
-					}
+						section.list ol li > figure > button {
+							position: absolute;
 
-						section.list ol li > figure figcaption > button {
-							min-width: 100%;
+							display: flex;
+							align-items: center;
+							justify-content: center;
 
-							border-top-left-radius: 0;
-							border-top-right-radius: 0;
+							right: 6px;
+							top: 6px;
+
+							min-width: 30px;
+							height: 30px;
+							padding: 0;
+
+							border-radius: 50%;
+
+							opacity: 0;
+							transition: opacity 150ms ease-in-out;
 						}
+
+						section.list ol li:hover > figure > button {
+							opacity: 100%;
+						}
+
+							section.list ol li > figure > button > img {
+								width: 10px;
+								height: auto;
+							}
 
 						.add-game {
 							background-color: var(--green);
+							transform: rotate(45deg);
 						}
 
 						.remove-game {
@@ -803,19 +794,140 @@ section.profile--open {
 	}
 
 /* =============================================================================
+  #GAME DETAILS SECTION
+============================================================================= */
+section.game-details {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+
+	font-weight: 500;
+
+	background-color: var(--secondary-color);
+
+	/* padding-bottom: var(--default-padding); */
+	z-index: 200;
+}
+
+	section.game-details h2 {
+		font-size: 22px; font-size: 2.2rem;
+		margin-bottom: 0;
+	}
+
+	section.game-details h3 {
+		font-size: 18px; font-size: 1.8rem;
+		font-weight: 600;
+		color: var(--secondary-color-light-text);
+	}
+
+	section.game-details > section:first-of-type h2, section.game-details > section:first-of-type h3 {
+		text-align: center;
+	}
+
+	section.game-details header {
+		position: relative;
+
+		height: 270px;
+		width: 100%;
+
+		margin-bottom: calc(23px + var(--default-padding));
+	}
+
+	section.game-details header, section.game-details header > img {
+		border-bottom-left-radius: 30px;
+		border-bottom-right-radius: 30px;
+	}
+
+		section.game-details header > button {
+			position: absolute;
+
+			top: var(--default-padding);
+			left: var(--default-padding);
+
+			width: 40px;
+			height: 40px;
+
+			min-width: 30px;
+			padding: 0;
+
+			border-radius: 50%;
+			background-color: var(--white);
+		}
+
+			section.game-details header > button > img {
+				height: 16px;
+				width: auto;
+			}
+
+		/* STAR CONTAINER */
+		section.game-details header > div {
+			position: absolute;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			left: 50%;
+			bottom: -23px;
+
+			transform: translateX(-50%);
+
+			height: 46px;
+
+			padding: 12px 16px;
+			background-color: var(--secondary-color-light);
+			border-radius: var(--border-radius);
+		}
+		
+			section.game-details header > div > .star + .star {
+				margin-left: 8px;
+			}
+
+		section.game-details header > img {
+			width: 100%;
+			height: 100%;
+
+			object-fit: cover;
+		}
+
+	/* main */
+	section.game-details > section {
+		margin: 0 var(--default-padding);
+		padding: var(--default-padding) 0;
+	}
+
+		section.game-details > section > p {
+			margin-bottom: 0;
+		}
+
+	section.game-details > section + section {
+		border-top: var(--border-settings);
+	}
+
+	section.game-details > section:first-of-type {
+		padding: 0 0 var(--default-padding) 0;
+	}
+
+		section.game-details .tags {
+			margin-top: 12px;
+			justify-content: center;
+		}
+/* =============================================================================
   #STAR RATING
 ============================================================================= */
 .star {
-    width: 14px;
+    width: 12px;
     height: auto;
 
-    opacity: 55%;
+    opacity: 25%;
 
 	fill: var(--white);
 }
 
-.list--overview .star {
-	width: 12px;
+.game-details .star {
+	width: 20px;
 }
 
 .star--red, .star--yellow, .star--green {
