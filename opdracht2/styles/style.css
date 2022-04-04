@@ -363,23 +363,70 @@ section.profile > header + section {
 	position: relative;
 
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 
 	margin-top: 16px;
 
-	height: 35px;
+	min-height: 35px;
+	overflow-x: scroll;
 }
+
+	.filters .filters__menu {
+		display: flex;
+		flex-direction: column-reverse;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+
+		transform: translateY(-100%);
+		transition: var(--btn-hover-transition);
+	}
+
+		.filters__menu button {
+			margin-top: 18px;
+			background-color: var(--white);
+			color: var(--primary-color);
+		}
+
+	.filters .filters__menu--open {
+		margin-top: 0!important;
+		top: auto;
+		left: auto;
+		right: auto;
+		transform: translateY(0);
+		position: relative;
+		padding-top: calc(35px + 16px);
+	}
+
+	.filters .filters__container {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+	}
+
+	.filters > button {
+		position: absolute;
+
+		top: 0;
+		left: 0;
+		right: 0;
+
+		z-index: 100;
+
+		height: 35px;
+	}
+
+	.filters button + .filters__container {
+		/* margin-bottom: 12px; */
+	}
 
 	.filters legend {
 		display: none;
 	}
 
 	.filters fieldset, .filters fieldset li {
-		height: 100%;
-	}
-
-	.filters fieldset + fieldset {
-		margin-left: 12px;
+		flex-grow: 1;
 	}
 
 		.filters fieldset input[type="checkbox"] {
@@ -401,7 +448,7 @@ section.profile > header + section {
 			display: flex;
 			align-items: center;
 
-			padding: 0 12px;
+			padding: 8px 12px;
 
 			height: 100%;
 			
@@ -417,7 +464,7 @@ section.profile > header + section {
 		}
 
 			/* selection circle */
-			.filters fieldset label > span {
+			.filters fieldset label > span:first-of-type {
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -431,7 +478,11 @@ section.profile > header + section {
 
 				background-color: #E9EAEC;
 
-				margin-right: 8px;
+				margin-right: 6px;
+			}
+
+			.filters__text {
+				margin: 0 auto;
 			}
 
 			@keyframes checkmarkAnimation {
@@ -545,6 +596,23 @@ main {
 	section.list {
 		margin: 0 -24px 0 -24px;
 	}
+	section.list--grid {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+
+		padding: 16px var(--default-padding);
+	}
+
+	section.list--grid h2 {
+		margin: 0!important;
+	}
+
+	section.list--grid ol {
+		margin: var(--default-padding) 0 0 0;
+	}
 
 	section.list + .list {
 		margin-top: var(--default-padding);
@@ -590,6 +658,14 @@ main {
 			overflow-x: scroll;
 			border: 2px solid var(--secondary-color);
 			border-radius: var(--border-radius);
+		}
+
+		section.list--grid ol {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+			gap: 12px;
+			width: 100%;
+			padding: 0;
 		}
 
 			section.list .list__empty {
@@ -652,7 +728,7 @@ main {
 			background-color: rgb(205 40 40 / 75%);
 		}
 
-		section.list ol::-webkit-scrollbar {
+		section.list ol::-webkit-scrollbar, .filters::-webkit-scrollbar {
 		    display: none;
 			-ms-overflow-style: none;
 			scrollbar-width: none;
@@ -661,10 +737,23 @@ main {
 			section.list ol li {
 				position: relative;
 
-				width: 200px;
-				min-width: 200px;
+				width: 220px;
+				min-width: 220px;
 
 				overflow: hidden;
+			}
+
+			section.list--grid ol li {
+				width: auto;
+				min-width: auto;
+				overflow: unset;
+			}
+
+			section.list ol li h3 {
+				text-overflow: ellipsis;
+				width: 100%;
+				overflow: hidden;
+				white-space: nowrap;
 			}
 
 			.draggable {
@@ -677,6 +766,10 @@ main {
 
 			section.list ol li + li {
 				margin-left: 16px;
+			}
+
+			section.list--grid ol li + li {
+				margin-left: 0;
 			}
 
 
@@ -712,6 +805,16 @@ main {
 						border-top: 2px solid #2e3340;
 					}
 
+					.dummy h3 {
+						width: 70%!important;
+						border-radius: 4px;
+
+						height: 20px;
+						background-color: var(--white);
+						opacity: 25%;
+						display: inline-block;
+					}
+
 					section.list ol li > figure figcaption {
 						padding: 12px 16px;
 
@@ -720,6 +823,18 @@ main {
 
 						background-color: var(--secondary-color-light);
 					}
+
+
+						section.list ol li > figure figcaption > div {
+							display: flex;
+							align-items: center;
+							justify-content: space-between;	
+						}
+
+							/* star container: default */
+							section.list ol li > figure figcaption > div > div {
+								display: inline-block;	 
+							}
 
 						section.list ol li > figure > button {
 							position: absolute;
@@ -946,6 +1061,36 @@ section.game-details {
 	fill: var(--green);
 }
 
+.rating {
+	margin-bottom: 0;
+
+	background-color: var(--white);
+	opacity: 25%;
+
+	padding: 0px 4px;
+
+	color: var(--white);
+	font-size: 14px;
+	font-weight: 700;
+
+	border-radius: 4px;
+}
+
+.rating--red, .rating--yellow, .rating--green {
+	opacity: 100%;
+}
+
+.rating--red {
+	background-color: var(--red);
+}
+
+.rating--yellow {
+	background-color: var(--yellow);
+}
+
+.rating--green {
+	background-color: var(--green);
+}
 /* =============================================================================
   #EMPTY STATE
 ============================================================================= */
@@ -1121,19 +1266,73 @@ button, .btn {
 /* =============================================================================
   #MEDIA QUERIES
 ============================================================================= */
+@media screen and (min-width: 1000px) {
+	section.list--grid ol {
+		grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+		gap: 18px;
+	}
+}
 @media screen and (min-width: 950px) {
 	.library > header {
-		position: relative;
+		position: fixed;
+
+		top: 0;
+		right: 0;
+
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: flex-start;
 		flex-direction: column;
 
-	    margin-left: auto;
+		margin-left: auto;
 
-	    width: calc(100% - 370px);
+		width: calc(100% - 370px);
+		height: 160px;
+
 		padding: 0;
-		
+		z-index: 100;
+	}
+
+	.filters > button {
+		z-index: 100;
+		position: absolute;
+		height: 35px;
+		bottom: -52px;
+		background-color: var(--white);
+		color: var(--primary-color);
+		top: unset;
+		left: unset;
+		right: unset;
+	}
+
+	#open-filters {
+		display: none;
+	}
+
+	#apply-filters { 
+		display: none;
+	}
+
+	.filters .filters__menu {
+		position: relative;
+		left: auto;
+		right: auto;
+		top: auto;
+		transform: none;
+		height: 100%;
+		justify-content: center;
+		width: 100%;
+	}
+
+	.filters .filters__container {
+		flex-wrap: nowrap;
+		height: 100%;
+		display: flex;
+		align-items: center;
+	}
+
+	.filters button + .filters__container {
+		margin-bottom: 0;
 	}
 
 	.library > header > * {
@@ -1187,6 +1386,7 @@ button, .btn {
 		}
 
 		.filters {
+			position:static;
 			display: flex;
 			align-items: center;
 			background-color: var(--primary-color);
@@ -1204,6 +1404,7 @@ button, .btn {
 
 			.filters fieldset {
 				height: 35px;
+				min-width: max-content;
 			}
 
 				.filters fieldset label {
@@ -1216,7 +1417,7 @@ button, .btn {
 					background-color: var(--white);
 				}
 
-				.filters fieldset label > span svg {
+				.filters fieldset label > span:first-of-type svg {
 					fill: var(--white);
 				}
 
@@ -1231,8 +1432,13 @@ button, .btn {
 
 	main {
 		margin: 0 0 0 auto;
-		padding: var(--default-padding) 0 24px 0;
+		padding: 95px 0 24px 0;
 		width: calc(100% - 370px);
+		transition: padding 250ms ease-in-out;
+	}
+
+	.filters--open + main {
+		padding: calc(160px + var(--default-padding)) 0 24px 0;
 	}
 
 		section.profile {
@@ -1264,4 +1470,9 @@ button, .btn {
 				bottom: var(--default-padding);
 				transform: translateY(0);
 			}
+
+	.btn-container {
+		left: auto;
+		width: calc(100% - calc(370px + var(--default-padding) + var(--default-padding)));
+	}
 }

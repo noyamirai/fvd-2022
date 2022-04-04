@@ -6,9 +6,8 @@ const notification = document.querySelector('.notification');
 const notificationText = document.querySelector('#notification-text');
 
 const gameActionContainer = document.querySelector('#game-action');
-const dismissBtn = document.querySelector("#btn-dismiss");
+const dismissBtn = document.querySelector('#btn-dismiss');
 const addGameButtons = document.querySelectorAll('.add-game');
-const removeGameButtons = document.querySelectorAll('.remove-game');
 
 const addToFaves = document.querySelector('#fav-game');
 const addToCompleted = document.querySelector('#completed-game');
@@ -22,12 +21,11 @@ let gameClone;
 // TODO (GLOBAL): REFACTOR AND PUT IN FUNCTIONS
 
 window.addEventListener('load', () => {
-    const savedFaves = JSON.parse(localStorage.getItem("saved-faves") || "[]");
-    const savedCompleted = JSON.parse(localStorage.getItem("saved-completed") || "[]");
+    const savedFaves = JSON.parse(localStorage.getItem('saved-faves') || '[]');
+    const savedCompleted = JSON.parse(localStorage.getItem('saved-completed') || '[]');
 
-    // TODO: LIST__EMPTY
-
-    if (savedFaves.length && savedCompleted.length) {
+    // When user has saved games for both collections
+    if (savedFaves != '' && savedCompleted != '') {
         faveGameCollection.classList.toggle('list__empty');
         faveGameCollection.innerHTML = savedFaves;
 
@@ -35,43 +33,57 @@ window.addEventListener('load', () => {
         completedGameCollection.innerHTML = savedCompleted;
         
         faveGameCollection.querySelectorAll('li').forEach((item) => {
-            addListeners(item);
+            addRemoveListeners(item);
         });
 
         completedGameCollection.querySelectorAll('li').forEach((item) => {
-            addListeners(item);
+            addRemoveListeners(item);
         });
 
-    } else if (savedFaves.length && !savedCompleted.length) {
+    // When user only has saved games in fav collection
+    } else if (savedFaves != '' && savedCompleted == '') {
         faveGameCollection.classList.toggle('list__empty');
         faveGameCollection.innerHTML = savedFaves;
 
         faveGameCollection.querySelectorAll('li').forEach((item) => {
-            addListeners(item);
+            addRemoveListeners(item);
         });
 
-    } else if (!savedFaves.length && savedCompleted.length) {
+        localStorage.removeItem('saved-completed');
+
+    // When user only has saved games in completed collection
+    } else if (savedFaves == '' && savedCompleted != '') {
         completedGameCollection.classList.toggle('list__empty');
         completedGameCollection.innerHTML = savedCompleted;
 
         completedGameCollection.querySelectorAll('li').forEach((item) => {
-            addListeners(item);
+            addRemoveListeners(item);
         });
+
+        localStorage.removeItem('saved-faves');
     }
     
 });
 
+// Save HTML of collection on add or remove item
 const saveData = (collection) => {
     if (collection.id == 'fave-game-collection') {
+        let collectionHTML = JSON.stringify(collection.innerHTML.trim().replace(/^(&nbsp;|\s)*/, ''));
+        let savedHTML = collectionHTML.replace(/\\n/g, '');
+
         console.log('added to faves');
-        localStorage.setItem('saved-faves', JSON.stringify(collection.innerHTML));
+        localStorage.setItem('saved-faves', savedHTML);
 
     } else if (collection.id == 'completed-game-collection') {
+        let collectionHTML = JSON.stringify(collection.innerHTML.trim().replace(/^(&nbsp;|\s)*/, ''));
+        let savedHTML = collectionHTML.replace(/\\n/g, '');
+
         console.log('added to completed');
-        localStorage.setItem('saved-completed', JSON.stringify(collection.innerHTML));
+        localStorage.setItem('saved-completed', savedHTML);
     }
 };
 
+// Clone item 
 const getClone = (toBeClonedItem, fromAction) => {
     let nodeCopy = toBeClonedItem.cloneNode(true);
 
@@ -109,15 +121,16 @@ const activateNotification = (notificationLabel, type) => {
     }, 2000);
 };
 
+// 
 const addToCollection = (gameCollection, clonedItem) => {
     gameCollection.classList.remove('list__empty');
     gameCollection.appendChild(clonedItem);
-    addListeners(clonedItem);
+    addRemoveListeners(clonedItem);
 
     toggleActionContainer();
 };
 
-const addListeners = (cloneEl) => {
+const addRemoveListeners = (cloneEl) => {
     const cloneButton = cloneEl.querySelector('.remove-game');
 
     // REMOVE BUTTON
@@ -149,7 +162,7 @@ const addListeners = (cloneEl) => {
 };
 
 const toggleActionContainer = () => {
-    bodyEl.classList.toggle("overlay");
+    bodyEl.classList.toggle('overlay');
     gameActionContainer.classList.toggle('visible');
 };
 
@@ -160,17 +173,17 @@ const allowDrop = (e) => {
 const onDrop = (e) => {
     e.preventDefault();
 
-    const data = e.dataTransfer.getData("text");
+    const data = e.dataTransfer.getData('text');
     const clonedItem = getClone(document.getElementById(data), 'drag');
 
     if (e.target.tagName.toLowerCase() == 'li') {
         const newTarget = e.target.closest('ol');
         newTarget.appendChild(clonedItem);
-        addListeners(clonedItem);
+        addRemoveListeners(clonedItem);
 
     } else {
         e.target.appendChild(clonedItem);
-        addListeners(clonedItem);
+        addRemoveListeners(clonedItem);
     }
 
     activateNotification('Game has been added to list!', 'added');
@@ -262,7 +275,7 @@ addToFaves.addEventListener('click', (e) => {
     addToCollection(faveGameCollection, gameItem);
 
     activateNotification('Game has been added to list!', 'added');
-    saveData(collection);
+    saveData(faveGameCollection);
 });
 
 addToCompleted.addEventListener('click', (e) => {
@@ -271,10 +284,10 @@ addToCompleted.addEventListener('click', (e) => {
     addToCollection(completedGameCollection, gameItem);
 
     activateNotification('Game has been added to list!', 'added');
-    saveData(collection);
+    saveData(completedGameCollection);
 });
 
-dismissBtn.addEventListener("click", (e) => {
+dismissBtn.addEventListener('click', (e) => {
     e.preventDefault();
     toggleActionContainer();
 });

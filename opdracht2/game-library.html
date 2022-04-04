@@ -23,8 +23,8 @@
 
             <nav class="nav nav--desktop">
                 <ul>
-                    <li class="active">
-                        <a id="library-btn" href="#">Game library</a>
+                    <li class="hide reset-filters">
+                        <a href="game-library.html">Reset filters</a>
                     </li>
                     <li>
                         <a id="filter-btn" href="#">Filters</a>
@@ -36,42 +36,35 @@
 
         <form class="filters" action="">
             <legend>Filter options</legend>
-            <fieldset>
-                <li>
-                    <input class="filters__option" type="checkbox" name="filter-action" id="filter-action">
-                    <label for="filter-action">
-                        <span>
-                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 10.1" style="enable-background:new 0 0 13.7 10.1;" xml:space="preserve">
 
-                                <path class="st0" d="M13.2,0.4c-0.6-0.6-1.5-0.6-2.1,0l-6,6L2.6,3.9C2,3.4,1,3.4,0.4,3.9c-0.6,0.6-0.6,1.5,0,2.1L4,9.6
+            <button id="apply-filters-desktop" class="hide" type="submit">Apply</button>
+
+            <div class="filters__menu">
+                <button id="apply-filters" class="hide" type="submit">Apply</button>
+
+                <div class="filters__container">
+
+                    <fieldset>
+                        <li>
+                            <input class="filters__option" type="checkbox" name="filter-option" id="filter-action">
+                            <label for="filter-action">
+                                <span>
+                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 10.1" style="enable-background:new 0 0 13.7 10.1;" xml:space="preserve">
+
+                                        <path class="st0" d="M13.2,0.4c-0.6-0.6-1.5-0.6-2.1,0l-6,6L2.6,3.9C2,3.4,1,3.4,0.4,3.9c-0.6,0.6-0.6,1.5,0,2.1L4,9.6
 	                            c0.2,0.2,0.3,0.3,0.5,0.3c0.6,0.2,1.2,0.2,1.7-0.3l7.1-7.1C13.8,2,13.8,1,13.2,0.4z" />
-                            </svg>
-                        </span>
-                        Action
-                    </label>
-                </li>
-            </fieldset>
-            <fieldset>
-                <li>
-                    <input class="filters__option" type="checkbox" name="filter-adventure" id="filter-adventure">
-                    <label for="filter-adventure">
-                        <span>
-                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 10.1" style="enable-background:new 0 0 13.7 10.1;" xml:space="preserve">
+                                    </svg>
+                                </span>
+                                <span class="filters__text">...</span>
+                            </label>
+                        </li>
+                    </fieldset>
 
-                                <path class="st0" d="M13.2,0.4c-0.6-0.6-1.5-0.6-2.1,0l-6,6L2.6,3.9C2,3.4,1,3.4,0.4,3.9c-0.6,0.6-0.6,1.5,0,2.1L4,9.6
-	                            c0.2,0.2,0.3,0.3,0.5,0.3c0.6,0.2,1.2,0.2,1.7-0.3l7.1-7.1C13.8,2,13.8,1,13.2,0.4z" />
-                            </svg> </span>
-                        Adventure
-                    </label>
-                </li>
-            </fieldset>
+                </div>
+            </div>
 
-            <!-- <div class="btn-container">
-                <h1>Game library</h1>
-                <p>You have selected some filters, would you like to apply them?</p>
-                <button class="btn" type="submit">Yes, apply filters(amount)</button>
-                <button id="btn-dismiss" class="btn btn--dismiss">I changed my mind</button>
-            </div> -->
+            <button id="open-filters">Open filters</button>
+
         </form>
     </header>
 
@@ -97,23 +90,6 @@
                             <span class="tags--platform__ps">Playstation 5</span>
                         </div>
                     </div>
-
-                    <!-- <section>
-                        <ul>
-                            <li>
-                                <p>50</p>
-                                <p>games in<br>library</p>
-                            </li>
-                            <li>
-                                <p>25</p>
-                                <p>games<br>completed</p>
-                            </li>
-                            <li>
-                                <p>18</p>
-                                <p>games<br>rated</p>
-                            </li>
-                        </ul>
-                    </section> -->
                 </section>
             </header>
 
@@ -139,8 +115,9 @@
 
         </section>
 
-        <section class="list">
+        <section class="list list--grid">
             <h2>Top 10 best rated (since 2019)</h2>
+
             <ol class="dummy" id="top-rated">
                 <li class="draggable draggable--mobile">
                     <figure>
@@ -152,41 +129,44 @@
                         <button class="hide remove-game"><img src="./images/icons/close-icon.svg" alt="Remove icon"></button>
 
                         <figcaption>
-
                             <div>
-                                <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                                    <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
+                                <div>
+                                    <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
+                                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
                                 C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
                                 c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
                                 c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                                </svg>
-                                <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                                    <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
+                                    </svg>
+                                    <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
+                                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
                                 C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
                                 c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
                                 c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                                </svg>
-                                <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                                    <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
+                                    </svg>
+                                    <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
+                                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
                                 C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
                                 c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
                                 c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                                </svg>
-                                <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                                    <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
+                                    </svg>
+                                    <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
+                                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
                                 C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
                                 c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
                                 c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                                </svg>
-                                <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                                    <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
+                                    </svg>
+                                    <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
+                                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
                                 C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
                                 c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
                                 c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                                </svg>
+                                    </svg>
+                                </div>
+
+                                <p class="rating">0.0</p>
                             </div>
 
-                            <h3>Apex Legends</h3>
+                            <h3></h3>
 
                         </figcaption>
                     </figure>
@@ -205,72 +185,6 @@
             <button class="btn" type="submit" id="completed-game" value="completed">Completed games</button>
             <button id="btn-dismiss" class="btn btn--dismiss">I changed my mind</button>
         </div>
-
-        <section class="game-details">
-            <header>
-
-                <button><img src="./images/icons/arrow-icon.svg" alt="Back icon"></button>
-
-                <img src="./images/dummy_header.png" alt="Dummy header">
-
-                <div>
-                    <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
-                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
-                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
-                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                    </svg>
-                    <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
-                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
-                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
-                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                    </svg>
-                    <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
-                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
-                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
-                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                    </svg>
-                    <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
-                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
-                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
-                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                    </svg>
-                    <svg class="star" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 13.7 13.1" style="enable-background:new 0 0 13.7 13.1;" xml:space="preserve">
-                        <path class="st0" d="M13.5,5.6c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.4-0.2-0.7-0.6-0.8L9.5,4C9.3,3.9,9.1,3.8,9,3.6L7.4,0.4
-                                C7.4,0.2,7.3,0.1,7.1,0.1C6.8-0.1,6.4,0,6.2,0.4L4.6,3.6C4.6,3.8,4.4,3.9,4.1,4L0.6,4.5c-0.1,0-0.3,0.1-0.4,0.2
-                                c-0.3,0.3-0.3,0.7,0,0.9l2.6,2.5C2.9,8.3,3,8.5,3,8.7l-0.6,3.6c0,0.1,0,0.3,0.1,0.4C2.6,13.1,3,13.2,3.3,13l3.2-1.7
-                                c0.2-0.1,0.4-0.1,0.6,0l3.2,1.7c0.1,0.1,0.3,0.1,0.4,0.1c0.4-0.1,0.6-0.4,0.5-0.8l-0.6-3.6c0-0.2,0-0.4,0.2-0.6L13.5,5.6z" />
-                    </svg>
-                </div>
-            </header>
-
-            <section>
-                <h2>Riders Republic</h2>
-                <h3>Ubisoft</h3>
-
-                <div class="tags tags--platform">
-                    <span class="tags--platform__pc">PC</span>
-                    <span class="tags--platform__ps">Playstation 5</span>
-                </div>
-            </section>
-
-            <section>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum incidunt veritatis velit, voluptas eveniet, molestias itaque corrupti tempore numquam esse voluptate, vero reprehenderit. Sit quae mollitia distinctio in, iusto deserunt!</p>
-            </section>
-
-            <section>
-                <p>stinky</p>
-            </section>
-
-            <section>
-                <h2>Genres</h2>
-            </section>
-
-        </section>
-
     </main>
 
     <nav class="nav nav--mobile">
@@ -280,6 +194,9 @@
             </li>
             <li class="active">
                 <a id="games-btn" href="#">Games</a>
+            </li>
+            <li class="hide reset-filters">
+                <a href="game-library.html">Reset filters</a>
             </li>
         </ul>
     </nav>

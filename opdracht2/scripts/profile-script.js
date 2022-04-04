@@ -8,7 +8,7 @@ const toggleActivity = () => {
     profileSection.classList.toggle('profile--open');
     profileBtn.closest('li').classList.toggle('active');
     gamesBtn.closest('li').classList.toggle('active');
-}
+};
 
 profileBtn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -20,4 +20,4 @@ gamesBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
     toggleActivity();
-})
+});
