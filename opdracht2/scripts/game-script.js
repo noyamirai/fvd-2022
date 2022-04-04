@@ -288,7 +288,6 @@ const getGamesWithGenres = (selectedGenres) => {
 
             const updatedCollection = document.querySelector('#top-rated');
             const firstItem = updatedCollection.getElementsByTagName('a')[0];
-            console.log(firstItem);
             firstItem.focus();
 
         })
@@ -298,12 +297,6 @@ const getGamesWithGenres = (selectedGenres) => {
 // Desktop nav button
 filterBtn.addEventListener('click', (e) => {
     e.preventDefault();
-
-    if (filterBtn.closest('li').classList.contains('active')) {
-        e.target.textContent = 'Filters';
-    } else {
-        e.target.textContent = 'Close';
-    }
 
     const allCheckboxes = document.querySelectorAll('.filters__option');
     let checkedValues = [];
@@ -324,10 +317,15 @@ filterBtn.addEventListener('click', (e) => {
         applyFiltersDesktopBtn.classList.add('hide');
     }
 
+    if (filterBtn.closest('li').classList.contains('active') && checkedValues.length) { 
+        e.target.textContent = 'Filters';
+        
+        applyFiltersDesktopBtn.classList.add('hide');
+    } else {
+        e.target.textContent = 'Close';
+    }
     filterContainer.classList.toggle('filters--open');
-
     filterBtn.closest('li').classList.toggle('active');
-
     mainHeader.classList.toggle('filters--open');
 });
 
