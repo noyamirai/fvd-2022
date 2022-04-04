@@ -4,6 +4,7 @@ const bodyEl = document.querySelector('body');
 
 const dragContainer = document.querySelectorAll('.list__drag-container');
 const draggableItems = document.querySelectorAll('.draggable');
+
 const notification = document.querySelector('.notification');
 const notificationText = document.querySelector('#notification-text');
 
@@ -20,8 +21,7 @@ const completedGameCollection = document.querySelector('#completed-game-collecti
 let counter = 0;
 let gameClone;
 
-// TODO (GLOBAL): REFACTOR AND PUT IN FUNCTIONS
-
+// Check saved data from localstorage
 window.addEventListener('load', () => {
     const savedFaves = JSON.parse(localStorage.getItem('saved-faves') || '[]');
     const savedCompleted = JSON.parse(localStorage.getItem('saved-completed') || '[]');
@@ -67,24 +67,40 @@ window.addEventListener('load', () => {
     
 });
 
+// Turn HTML Collection into JSON string so it can be passed along in localstorage
+const stringifyData = (element) => {
+    let htmlCode = JSON.stringify(element.innerHTML.trim().replace(/^(&nbsp;|\s)*/, ''));
+
+    return htmlCode.replace(/\\n/g, '');
+};
+
+const toggleActionContainer = () => {
+    bodyEl.classList.toggle('overlay');
+    gameActionContainer.classList.toggle('visible');
+
+    // Force focus
+    if (gameActionContainer.classList.contains('visible')) {
+        gameActionContainer.focus();        
+    }
+};
+
 // Save HTML of collection on add or remove item
 const saveData = (collection) => {
     if (collection.id == 'fave-game-collection') {
-        let collectionHTML = JSON.stringify(collection.innerHTML.trim().replace(/^(&nbsp;|\s)*/, ''));
-        let savedHTML = collectionHTML.replace(/\\n/g, '');
-
         console.log('added to faves');
-        collection.focus();        
+        let savedHTML = stringifyData(collection);
+
         localStorage.setItem('saved-faves', savedHTML);
 
     } else if (collection.id == 'completed-game-collection') {
-        let collectionHTML = JSON.stringify(collection.innerHTML.trim().replace(/^(&nbsp;|\s)*/, ''));
-        let savedHTML = collectionHTML.replace(/\\n/g, '');
-
         console.log('added to completed');
-        collection.focus();        
+        let savedHTML = stringifyData(collection);
+
         localStorage.setItem('saved-completed', savedHTML);
     }
+
+    // Force focus onto collection
+    collection.focus();        
 };
 
 // Clone item 
@@ -125,7 +141,7 @@ const activateNotification = (notificationLabel, type) => {
     }, 2000);
 };
 
-// 
+// Add cloned item to a specific collection
 const addToCollection = (gameCollection, clonedItem) => {
     gameCollection.classList.remove('list__empty');
     gameCollection.appendChild(clonedItem);
@@ -134,6 +150,7 @@ const addToCollection = (gameCollection, clonedItem) => {
     toggleActionContainer();
 };
 
+// Add event listener to remove buttons for cloned items
 const addRemoveListeners = (cloneEl) => {
     const cloneButton = cloneEl.querySelector('.remove-game');
 
@@ -141,6 +158,7 @@ const addRemoveListeners = (cloneEl) => {
     cloneButton.addEventListener('click', (e) => {
         const collection = e.target.closest('ol');
 
+        // Check which id it is being removed from
         if (collection.id == 'fave-game-collection') {
             const allItems = collection.getElementsByTagName('li');
 
@@ -165,15 +183,8 @@ const addRemoveListeners = (cloneEl) => {
     });
 };
 
-const toggleActionContainer = () => {
-    bodyEl.classList.toggle('overlay');
-    gameActionContainer.classList.toggle('visible');
 
-    if (gameActionContainer.classList.contains('visible')) {
-        gameActionContainer.focus();        
-    }
-};
-
+// DRAG & DROP SOURCE: https://www.w3schools.com/html/html5_draganddrop.asp
 const allowDrop = (e) => {
     e.preventDefault();
 };
@@ -181,9 +192,11 @@ const allowDrop = (e) => {
 const onDrop = (e) => {
     e.preventDefault();
 
+    // Clone data
     const data = e.dataTransfer.getData('text');
     const clonedItem = getClone(document.getElementById(data), 'drag');
 
+    // Make sure it always appends to collection
     if (e.target.tagName.toLowerCase() == 'li') {
         const newTarget = e.target.closest('ol');
         newTarget.appendChild(clonedItem);
@@ -195,20 +208,22 @@ const onDrop = (e) => {
     }
 
     activateNotification('Game has been added to list!', 'added');
-
     saveData(e.target);
 
     e.target.classList.remove('list__empty');
 };
 
+// Set correct item that needs to be cloned later
 const drag = (e) => {
     e.dataTransfer.setData('text', e.target.closest('li').id);
 };
 
+// Containers in which items can be dragged into (only desktop)
 dragContainer.forEach((item) => {
     if (!(window.innerWidth <= 950)) {
-
         item.addEventListener('dragover', (e) => {
+
+            // Don't allow drop when game is in list already
             if (!e.target.classList.contains('list__drag-container--block')) {
                 allowDrop(e);
             }
@@ -220,9 +235,10 @@ dragContainer.forEach((item) => {
     }
 });
 
+// All items that can be dragged
 draggableItems.forEach((listItem) => {
 
-    // IF DESKTOP SIZE
+    // Allow dragging only on desktop
     if (!(window.innerWidth <= 950)) {
 
         listItem.classList.remove('draggable--mobile');
@@ -234,7 +250,7 @@ draggableItems.forEach((listItem) => {
 
                 const allItems = container.getElementsByTagName('li');
 
-                // Check if container already has games
+                // Check if a collection already has the game thats being dragged
                 if (allItems.length) {
                     for (let game of allItems) {
                         // If game is already inside list
@@ -251,6 +267,7 @@ draggableItems.forEach((listItem) => {
             drag(e);
         });
 
+        // Remove indicator
         listItem.addEventListener('dragend', () => {
             dragContainer.forEach((item) => {
                 item.classList.remove('list__empty--active');
@@ -258,6 +275,7 @@ draggableItems.forEach((listItem) => {
             });
         });
     } else {
+        // Add item to list on click
         listItem.classList.add('draggable--mobile');
 
         listItem.querySelector('picture').addEventListener('click', (e) => {
@@ -269,10 +287,10 @@ draggableItems.forEach((listItem) => {
     }
 });
 
+// Triggers game action container
 addGameButtons.forEach((button) => {
     button.addEventListener('click', (e) => {
         gameClone = getClone(e.target.closest('li'), 'click');
-
         toggleActionContainer();
     });
 });
@@ -295,6 +313,7 @@ addToCompleted.addEventListener('click', () => {
     saveData(completedGameCollection);
 });
 
+// Closes game action container
 dismissBtn.addEventListener('click', (e) => {
     e.preventDefault();
     toggleActionContainer();

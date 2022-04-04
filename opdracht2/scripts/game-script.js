@@ -19,54 +19,70 @@ const mainHeader = document.querySelector('#main-header');
 const filterContainer = document.querySelector('.filters');
 const mobileFilterContainer = document.querySelector('.filters__menu');
 
-const filterBtn = document.querySelector('#filter-btn');
+const desktopFilterBtn = document.querySelector('#filter-btn');
+const mobileFilterBtn = document.querySelector('#open-filters');
 
-const openFilterBtn = document.querySelector('#open-filters');
-const applyFiltersBtn = document.querySelector('#apply-filters');
-const applyFiltersDesktopBtn = document.querySelector('#apply-filters-desktop');
+const mobileApplyFiltersBtn = document.querySelector('#apply-filters');
+const desktopApplyFiltersBtn = document.querySelector('#apply-filters-desktop');
 
 let filtered = false;
 
+// Create 19 game items
 for (let i = 0; i < 19; i++) {
     let nodeCopy = topRatedItems[0].cloneNode(true);
     topRatedCollection.appendChild(nodeCopy);
 }
 
+const getCheckedValues = () => {
+    const allCheckboxes = document.querySelectorAll('.filters__option');
+    let values = [];
+
+    allCheckboxes.forEach((box) => {
+        if (box.checked) {
+            values.push(box.checked);
+        }
+    });
+
+    return values;
+};
+
+const toggleApplyButtons = (isFiltered, checkedValues) => {
+
+    // If user has filtered on genre
+    if (isFiltered) {
+        mobileApplyFiltersBtn.classList.remove('hide');
+        desktopApplyFiltersBtn.classList.remove('hide');
+
+        // When filter menu has been opened, check what is being selected 
+        if (!checkedValues.length) {
+            mobileApplyFiltersBtn.textContent = `Reset filters`;
+            desktopApplyFiltersBtn.textContent = `Reset filters`;
+        } else {
+            mobileApplyFiltersBtn.textContent = `Apply filters (${checkedValues.length})`;
+            desktopApplyFiltersBtn.textContent = `Apply filters (${checkedValues.length})`;
+        }
+    } else {
+        // When filter menu has been opened by default (on home), check what is being selected 
+        if (checkedValues.length) {
+            mobileApplyFiltersBtn.classList.remove('hide');
+            desktopApplyFiltersBtn.classList.remove('hide');
+            mobileApplyFiltersBtn.textContent = `Apply filters (${checkedValues.length})`;
+            desktopApplyFiltersBtn.textContent = `Apply filters (${checkedValues.length})`;
+        } else {
+            mobileApplyFiltersBtn.classList.add('hide');
+            desktopApplyFiltersBtn.classList.add('hide');
+        }
+    }
+
+};
+
+// Add event listener to checkboxes for cloned items
 const addCheckListeners = (cloneEl) => {
     const checkbox = cloneEl.querySelector('.filters__option');
 
     checkbox.addEventListener('change', () => {
-        const allCheckboxes = document.querySelectorAll('.filters__option');
-        let checkedValues = [];
-
-        allCheckboxes.forEach((box) => {
-            if (box.checked) {
-                checkedValues.push(box.checked);
-            }
-        });
-
-        if (filtered) {
-            applyFiltersBtn.classList.remove('hide');
-            applyFiltersDesktopBtn.classList.remove('hide');
-
-            if(!checkedValues.length) {
-                applyFiltersBtn.textContent = `Reset filters`;
-                applyFiltersDesktopBtn.textContent = `Reset filters`;
-            } else {
-                applyFiltersBtn.textContent = `Apply filters (${checkedValues.length})`;
-                applyFiltersDesktopBtn.textContent = `Apply filters (${checkedValues.length})`;
-            }
-        } else {
-            if (checkedValues.length) {
-                applyFiltersBtn.classList.remove('hide');
-                applyFiltersDesktopBtn.classList.remove('hide');
-                applyFiltersBtn.textContent = `Apply filters (${checkedValues.length})`;
-                applyFiltersDesktopBtn.textContent = `Apply filters (${checkedValues.length})`;
-            } else {
-                applyFiltersBtn.classList.add('hide');
-                applyFiltersDesktopBtn.classList.add('hide');
-            }
-        }
+        const checkedValues = getCheckedValues();
+        toggleApplyButtons(filtered, checkedValues);
     });
 };
 
@@ -109,65 +125,78 @@ const getRating = (metacritic) => {
     return Math.round((metacritic * 5 / 100) * 10) / 10;
 };
 
-// Top Rated since 2019
+const pushGameItems = (gameArray) => {
+
+    // Use game objects from array to fill site with content
+    let index = 0;
+    gameArray.forEach((game) => {
+
+        let listItem = topRatedItems[index];
+        let gameCover = listItem.querySelector('img');
+        let gameTitle = listItem.querySelector('h3');
+        let metaRating = listItem.querySelector('.rating');
+        let stars = listItem.querySelectorAll('svg');
+
+        const rating = getRating(game.metacritic);
+
+        stars.forEach((star) => {
+            star.removeAttribute('class');
+            star.classList.add('star');
+        });
+
+        metaRating.removeAttribute('class');
+        metaRating.classList.add('rating');
+
+        gameTitle.textContent = game.name;
+        listItem.id = game.slug;
+        gameCover.src = game.background_image;
+
+        metaRating.textContent = rating;
+        addRatingColors(rating, stars, metaRating);
+
+        index++;
+    });
+};
+
+const createGameObject = (data) => {
+    let newObject = {};
+    let newArray = [];
+
+    // Create own game object based on api results
+    data.forEach((object) => {
+        newObject.id = object.id;
+        newObject.slug = object.slug;
+        newObject.name = object.name;
+        newObject.background_image = object.background_image;
+        newObject.rating_top = object.rating_top;
+        newObject.metacritic = object.metacritic;
+        newObject.parent_platforms = object.parent_platforms;
+        newObject.genres = object.genres;
+
+        newArray.push(newObject);
+
+        // reset
+        newObject = {};
+    });
+
+    return newArray;
+};
+
+// Get top rated games since 2019
 const getTopRated = () => {
     fetch(`https://api.rawg.io/api/games?key=${key}&page_size=20&metacritic=80,100&dates=2019-01-01,2022-01-01&ordering=-metacritic`, requestOptions)
         .then(response => response.json())
         .then((result) => {
-            let gameObject = {};
-            let gameArray = [];
 
-            // Create own game object
-            result.results.forEach((game) => {
-                gameObject.id = game.id;
-                gameObject.slug = game.slug;
-                gameObject.name = game.name;
-                gameObject.background_image = game.background_image;
-                gameObject.rating_top = game.rating_top;
-                gameObject.metacritic = game.metacritic;
-                gameObject.parent_platforms = game.parent_platforms;
-                gameObject.genres = game.genres;
-
-                gameArray.push(gameObject);
-                // reset
-                gameObject = {};
-            });
-
-            let index = 0;
+            const gameArray = createGameObject(result.results);
             topRatedCollection.classList.remove('dummy');
+            pushGameItems(gameArray);
 
-            // Use game object to fill site with content
-            gameArray.forEach((game) => {
-
-                let listItem = topRatedItems[index];
-                let gameCover = listItem.querySelector('img');
-                let gameTitle = listItem.querySelector('h3');
-                let metaRating = listItem.querySelector('.rating');
-                let stars = listItem.querySelectorAll('svg');
-
-                const rating = getRating(game.metacritic);
-
-                stars.forEach((star) => {
-                    star.removeAttribute('class');
-                    star.classList.add('star');
-                });
-
-                metaRating.removeAttribute('class');
-                metaRating.classList.add('rating');
-
-                gameTitle.textContent = game.name;
-                listItem.id = game.slug;
-                gameCover.src = game.background_image;
-
-                metaRating.textContent = rating;
-                addRatingColors(rating, stars, metaRating);
-
-                index++;
-            });
         })
         .catch(error => console.log('error', error));
 };
 
+// Get all available genres for filtering
 const getAllGenres = () => {
     fetch(`https://api.rawg.io/api/genres?key=${key}`, requestOptions)
         .then(response => response.json())
@@ -182,18 +211,21 @@ const getAllGenres = () => {
                 genreObject.name = genre.name;
 
                 genreArray.push(genreObject);
+
                 // reset
                 genreObject = {};
             });
 
             let index = 0;
 
+            // Create filter checkboxes based on available amount
             for (let i = 0; i < genreArray.length - 1; i++) {
                 let filterCopy = filterElement[0].cloneNode(true);
                 filterElContainer.appendChild(filterCopy);
                 addCheckListeners(filterCopy);
             }
 
+            // Use object fill site with content
             genreArray.forEach((genre) => {
                 let listItem = filterElement[index];
                 let inputEl = listItem.querySelector('input');
@@ -213,79 +245,35 @@ const getAllGenres = () => {
         .catch(error => console.log('error', error));
 };
 
+// Find all games based on selected genres
 const getGamesWithGenres = (selectedGenres) => {
-
     fetch(`https://api.rawg.io/api/games?key=${key}&page_size=20&genres=${selectedGenres.toString()}`, requestOptions)
         .then(response => response.json())
         .then((result) => {
 
+            // Reset filter styling
             topRatedCollection.closest('section').querySelector('h2').textContent = 'Filter results';
             filterContainer.classList.remove('filters--open');
             mobileFilterContainer.classList.remove('filters__menu--open');
-            applyFiltersBtn.classList.add('hide');
-            applyFiltersDesktopBtn.classList.add('hide');
+            mobileApplyFiltersBtn.classList.add('hide');
+            desktopApplyFiltersBtn.classList.add('hide');
 
-            if(window.innerWidth >= 950) {
+            if (window.innerWidth >= 950) {
                 mainHeader.classList.remove('filters--open');
                 mainHeader.querySelector('.active').classList.remove('active');
                 mainHeader.querySelector('#filter-btn').textContent = 'Filters';
             }
 
-            openFilterBtn.textContent = 'Open filters';
+            mobileFilterBtn.textContent = 'Open filters';
 
+            // User has filtered
             filtered = true;
 
-            let gameObject = {};
-            let gameArray = [];
-
-            // Create own game object
-            result.results.forEach((game) => {
-                gameObject.id = game.id;
-                gameObject.slug = game.slug;
-                gameObject.name = game.name;
-                gameObject.background_image = game.background_image;
-                gameObject.rating_top = game.rating_top;
-                gameObject.metacritic = game.metacritic;
-                gameObject.parent_platforms = game.parent_platforms;
-                gameObject.genres = game.genres;
-
-                gameArray.push(gameObject);
-                // reset
-                gameObject = {};
-            });
-
-            let index = 0;
+            const gameArray = createGameObject(result.results);
             topRatedCollection.classList.remove('dummy');
+            pushGameItems(gameArray);
 
-            // Use game object to fill site with content
-            gameArray.forEach((game) => {
-
-                let listItem = topRatedItems[index];
-                let gameCover = listItem.querySelector('img');
-                let gameTitle = listItem.querySelector('h3');
-                let metaRating = listItem.querySelector('.rating');
-                let stars = listItem.querySelectorAll('svg');
-
-                const rating = getRating(game.metacritic);
-
-                stars.forEach((star) => {
-                    star.removeAttribute('class');
-                    star.classList.add('star');
-                });
-
-                metaRating.removeAttribute('class');
-                metaRating.classList.add('rating');
-
-                gameTitle.textContent = game.name;
-                listItem.id = game.slug;
-                gameCover.src = game.background_image;
-
-                metaRating.textContent = rating;
-                addRatingColors(rating, stars, metaRating);
-
-                index++;
-            });
-
+            // get new elements and force focus
             const updatedCollection = document.querySelector('#top-rated');
             const firstItem = updatedCollection.getElementsByTagName('a')[0];
             firstItem.focus();
@@ -295,41 +283,34 @@ const getGamesWithGenres = (selectedGenres) => {
 };
 
 // Desktop nav button
-filterBtn.addEventListener('click', (e) => {
+desktopFilterBtn.addEventListener('click', (e) => {
     e.preventDefault();
-
-    const allCheckboxes = document.querySelectorAll('.filters__option');
-    let checkedValues = [];
-
-    allCheckboxes.forEach((box) => {
-        if (box.checked) {
-            checkedValues.push(box.checked);
-        }
-    });
+    const checkedValues = getCheckedValues();
 
     if (checkedValues.length) {
-        applyFiltersBtn.classList.remove('hide');
-        applyFiltersDesktopBtn.classList.remove('hide');
-        applyFiltersBtn.textContent = `Apply filters (${checkedValues.length})`;
-        applyFiltersDesktopBtn.textContent = `Apply filters (${checkedValues.length})`;
+        mobileApplyFiltersBtn.classList.remove('hide');
+        desktopApplyFiltersBtn.classList.remove('hide');
+        mobileApplyFiltersBtn.textContent = `Apply filters (${checkedValues.length})`;
+        desktopApplyFiltersBtn.textContent = `Apply filters (${checkedValues.length})`;
     } else {
-        applyFiltersBtn.classList.add('hide');
-        applyFiltersDesktopBtn.classList.add('hide');
+        mobileApplyFiltersBtn.classList.add('hide');
+        desktopApplyFiltersBtn.classList.add('hide');
     }
 
-    if (filterBtn.closest('li').classList.contains('active') && checkedValues.length) { 
+    if (desktopFilterBtn.closest('li').classList.contains('active') && checkedValues.length) {
         e.target.textContent = 'Filters';
-        
-        applyFiltersDesktopBtn.classList.add('hide');
+
+        desktopApplyFiltersBtn.classList.add('hide');
     } else {
         e.target.textContent = 'Close';
     }
+
     filterContainer.classList.toggle('filters--open');
-    filterBtn.closest('li').classList.toggle('active');
+    desktopFilterBtn.closest('li').classList.toggle('active');
     mainHeader.classList.toggle('filters--open');
 });
 
-openFilterBtn.addEventListener('click', (e) => {
+mobileFilterBtn.addEventListener('click', (e) => {
     e.preventDefault();
     mobileFilterContainer.classList.toggle('filters__menu--open');
 
@@ -342,38 +323,9 @@ openFilterBtn.addEventListener('click', (e) => {
 
 checkBoxes.forEach(box => {
     box.addEventListener('change', () => {
-        const allCheckboxes = document.querySelectorAll('.filters__option');
-        let checkedValues = [];
+        const checkedValues = getCheckedValues();
 
-        allCheckboxes.forEach((box) => {
-            if (box.checked) {
-                checkedValues.push(box.checked);
-            }
-        });
-
-
-        if (filtered) {
-            applyFiltersBtn.classList.remove('hide');
-            applyFiltersDesktopBtn.classList.remove('hide');
-
-            if(!checkedValues.length) {
-                applyFiltersBtn.textContent = `Reset filters`;
-                applyFiltersDesktopBtn.textContent = `Reset filters`;
-            } else {
-                applyFiltersBtn.textContent = `Apply filters (${checkedValues.length})`;
-                applyFiltersDesktopBtn.textContent = `Apply filters (${checkedValues.length})`;
-            }
-        } else {
-            if (checkedValues.length) {
-                applyFiltersBtn.classList.remove('hide');
-                applyFiltersDesktopBtn.classList.remove('hide');
-                applyFiltersBtn.textContent = `Apply filters (${checkedValues.length})`;
-                applyFiltersDesktopBtn.textContent = `Apply filters (${checkedValues.length})`;
-            } else {
-                applyFiltersBtn.classList.add('hide');
-                applyFiltersDesktopBtn.classList.add('hide');
-            }
-        }
+        toggleApplyButtons(filtered, checkedValues);
     });
 });
 
@@ -383,19 +335,12 @@ filterForm.addEventListener('submit', (e) => {
     const formData = new FormData(e.target);
     const selectedGenres = formData.getAll('filter-option');
 
-    const allCheckboxes = document.querySelectorAll('.filters__option');
-    let checkedValues = [];
+    const checkedValues = getCheckedValues();
 
-    allCheckboxes.forEach((box) => {
-        if (box.checked) {
-            checkedValues.push(box.checked);
-        }
-    });
-
+    // If filtered and no genres selected -> reset filters
     if (filtered && !checkedValues.length) {
         location.reload();
     } else {
-
         getGamesWithGenres(selectedGenres);
     }
 });

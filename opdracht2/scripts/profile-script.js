@@ -12,12 +12,10 @@ const toggleActivity = () => {
 
 profileBtn.addEventListener('click', (e) => {
     e.preventDefault();
-
     toggleActivity();
 });
 
 gamesBtn.addEventListener('click', (e) => {
     e.preventDefault();
-
     toggleActivity();
 });
