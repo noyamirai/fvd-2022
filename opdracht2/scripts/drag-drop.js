@@ -1,5 +1,7 @@
 console.log('DRAG AND DROP SCRIPT: ACTIVE');
 
+const bodyEl = document.querySelector('body');
+
 const dragContainer = document.querySelectorAll('.list__drag-container');
 const draggableItems = document.querySelectorAll('.draggable');
 const notification = document.querySelector('.notification');
@@ -72,6 +74,7 @@ const saveData = (collection) => {
         let savedHTML = collectionHTML.replace(/\\n/g, '');
 
         console.log('added to faves');
+        collection.focus();        
         localStorage.setItem('saved-faves', savedHTML);
 
     } else if (collection.id == 'completed-game-collection') {
@@ -79,6 +82,7 @@ const saveData = (collection) => {
         let savedHTML = collectionHTML.replace(/\\n/g, '');
 
         console.log('added to completed');
+        collection.focus();        
         localStorage.setItem('saved-completed', savedHTML);
     }
 };
@@ -164,6 +168,10 @@ const addRemoveListeners = (cloneEl) => {
 const toggleActionContainer = () => {
     bodyEl.classList.toggle('overlay');
     gameActionContainer.classList.toggle('visible');
+
+    if (gameActionContainer.classList.contains('visible')) {
+        gameActionContainer.focus();        
+    }
 };
 
 const allowDrop = (e) => {
@@ -243,7 +251,7 @@ draggableItems.forEach((listItem) => {
             drag(e);
         });
 
-        listItem.addEventListener('dragend', (e) => {
+        listItem.addEventListener('dragend', () => {
             dragContainer.forEach((item) => {
                 item.classList.remove('list__empty--active');
                 item.classList.remove('list__drag-container--block');
@@ -269,7 +277,7 @@ addGameButtons.forEach((button) => {
     });
 });
 
-addToFaves.addEventListener('click', (e) => {
+addToFaves.addEventListener('click', () => {
     const gameItem = gameClone;
 
     addToCollection(faveGameCollection, gameItem);
@@ -278,7 +286,7 @@ addToFaves.addEventListener('click', (e) => {
     saveData(faveGameCollection);
 });
 
-addToCompleted.addEventListener('click', (e) => {
+addToCompleted.addEventListener('click', () => {
     const gameItem = gameClone;
 
     addToCollection(completedGameCollection, gameItem);
