@@ -950,6 +950,7 @@ button, .btn {
     font-weight: 700;
     text-decoration: none;
     text-align: center;
+	font-size: 14px; font-size: 1.4rem;
 
     cursor: pointer;
 
